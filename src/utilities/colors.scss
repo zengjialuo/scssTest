@@ -1,0 +1,68 @@
+// Color utilities
+@use 'common-mixin/variables/colors' as *;
+@use 'common-mixin/functions/color' as *;
+@use 'scss/variables/tokens' as *;
+
+// Background colors
+.bg-primary { background-color: $brand-primary; }
+.bg-secondary { background-color: $brand-secondary; }
+.bg-accent { background-color: $brand-accent; }
+.bg-success { background-color: $cm-color-success; }
+.bg-warning { background-color: $cm-color-warning; }
+.bg-danger { background-color: $cm-color-danger; }
+.bg-info { background-color: $cm-color-info; }
+.bg-white { background-color: $cm-color-white; }
+.bg-black { background-color: $cm-color-black; }
+
+// Neutral backgrounds
+.bg-50 { background-color: $cm-neutral-50; }
+.bg-100 { background-color: $cm-neutral-100; }
+.bg-200 { background-color: $cm-neutral-200; }
+.bg-300 { background-color: $cm-neutral-300; }
+.bg-400 { background-color: $cm-neutral-400; }
+.bg-500 { background-color: $cm-neutral-500; }
+.bg-600 { background-color: $cm-neutral-600; }
+.bg-700 { background-color: $cm-neutral-700; }
+.bg-800 { background-color: $cm-neutral-800; }
+.bg-900 { background-color: $cm-neutral-900; }
+
+// Soft/pastel backgrounds
+.bg-primary-soft { background-color: cm-tint($brand-primary, 85%); }
+.bg-success-soft { background-color: cm-tint($cm-color-success, 80%); }
+.bg-warning-soft { background-color: cm-tint($cm-color-warning, 80%); }
+.bg-danger-soft { background-color: cm-tint($cm-color-danger, 80%); }
+.bg-info-soft { background-color: cm-tint($cm-color-info, 80%); }
+
+// Transparent backgrounds
+.bg-transparent { background-color: transparent; }
+
+// Gradient backgrounds
+.bg-gradient-primary {
+  background: linear-gradient(135deg, $brand-primary, $brand-secondary);
+}
+.bg-gradient-brand {
+  background: linear-gradient(135deg, $brand-primary 0%, $brand-accent 100%);
+}
+.bg-gradient-dark {
+  background: linear-gradient(135deg, $cm-neutral-800, $cm-neutral-900);
+}
+.bg-gradient-light {
+  background: linear-gradient(135deg, $cm-neutral-50, $cm-neutral-100);
+}
+
+// Border colors
+.border-primary { border-color: $brand-primary; }
+.border-secondary { border-color: $brand-secondary; }
+.border-success { border-color: $cm-color-success; }
+.border-warning { border-color: $cm-color-warning; }
+.border-danger { border-color: $cm-color-danger; }
+.border-info { border-color: $cm-color-info; }
+.border-muted { border-color: $cm-neutral-200; }
+.border-transparent { border-color: transparent; }
+
+// Opacity utilities
+.opacity-0 { opacity: 0; }
+.opacity-25 { opacity: 0.25; }
+.opacity-50 { opacity: 0.5; }
+.opacity-75 { opacity: 0.75; }
+.opacity-100 { opacity: 1; }

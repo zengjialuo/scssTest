@@ -1,0 +1,53 @@
+// Main entry point
+// compile with: sass --load-path=src --load-path=node_modules src/index.scss dist/index.css
+
+// Theme tokens (CSS custom properties)
+@use 'scss/themes/light';
+@use 'scss/themes/dark';
+
+// Import common typography for body defaults
+@use 'common-mixin/variables/typography' as typo;
+
+// Components
+@use 'components/button';
+@use 'components/card';
+@use 'components/form';
+@use 'components/badge';
+@use 'components/modal';
+@use 'components/navigation';
+@use 'components/table';
+@use 'components/tooltip';
+@use 'components/alert';
+
+// Pages
+@use 'pages/home';
+@use 'pages/dashboard';
+@use 'pages/auth';
+
+// Utilities (last to allow overriding)
+@use 'utilities/spacing';
+@use 'utilities/typography';
+@use 'utilities/display';
+@use 'utilities/colors';
+
+// Global reset & base
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: typo.$cm-font-family-sans;
+  line-height: 1.5;
+  color: var(--color-text, #111827);
+  background-color: var(--color-bg, #ffffff);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

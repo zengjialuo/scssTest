@@ -1,0 +1,91 @@
+// Card mixins
+@use 'common-mixin/mixins/animation' as *;
+@use 'common-mixin/mixins/effects' as *;
+@use 'common-mixin/mixins/flexbox' as *;
+@use 'scss/variables/component-vars' as *;
+
+@mixin card-base {
+  background-color: $card-bg;
+  border: 1px solid $card-border-color;
+  border-radius: $card-border-radius;
+  overflow: hidden;
+}
+
+@mixin card-padded($padding: $card-padding) {
+  @include card-base;
+  padding: $padding;
+}
+
+@mixin card-elevated($shadow-size: md) {
+  @include card-base;
+  @include cm-shadow($shadow-size);
+  border: none;
+}
+
+@mixin card-interactive {
+  @include card-base;
+  @include cm-transition(box-shadow transform, 200ms);
+  cursor: pointer;
+
+  &:hover {
+    @include cm-shadow(md);
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+@mixin card-header {
+  @include cm-flex-between;
+  padding: $card-header-padding;
+  border-bottom: 1px solid $card-border-color;
+}
+
+@mixin card-footer {
+  @include cm-flex-between;
+  padding: $card-footer-padding;
+  border-top: 1px solid $card-border-color;
+  background-color: #f9fafb;
+}
+
+@mixin card-body {
+  padding: $card-padding;
+}
+
+@mixin card-cover-image {
+  img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+@mixin card-horizontal {
+  @include card-base;
+  @include cm-flex;
+
+  .card-image {
+    width: 200px;
+    flex-shrink: 0;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .card-content {
+    @include cm-flex-fill;
+    padding: $card-padding;
+  }
+}
+
+@mixin card-grid($columns: 3, $gap: 24px) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  gap: $gap;
+}

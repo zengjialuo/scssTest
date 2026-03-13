@@ -1,0 +1,86 @@
+// Typography utilities
+@use 'common-mixin/mixins/typography' as *;
+@use 'common-mixin/variables/typography' as *;
+@use 'common-mixin/variables/colors' as *;
+
+// Headings
+.h1 { @include cm-heading-1; }
+.h2 { @include cm-heading-2; }
+.h3 { @include cm-heading-3; }
+.h4 { @include cm-heading-4; }
+.h5 { @include cm-heading-5; }
+.h6 { @include cm-heading-6; }
+
+// Body text
+.text-xs { font-size: $cm-font-size-xs; }
+.text-sm { font-size: $cm-font-size-sm; }
+.text-base { font-size: $cm-font-size-base; }
+.text-lg { font-size: $cm-font-size-lg; }
+.text-xl { font-size: $cm-font-size-xl; }
+.text-2xl { font-size: $cm-font-size-2xl; }
+.text-3xl { font-size: $cm-font-size-3xl; }
+.text-4xl { font-size: $cm-font-size-4xl; }
+
+// Font weight
+.font-thin { font-weight: $cm-font-weight-thin; }
+.font-light { font-weight: $cm-font-weight-light; }
+.font-normal { font-weight: $cm-font-weight-normal; }
+.font-medium { font-weight: $cm-font-weight-medium; }
+.font-semibold { font-weight: $cm-font-weight-semibold; }
+.font-bold { font-weight: $cm-font-weight-bold; }
+.font-extrabold { font-weight: $cm-font-weight-extrabold; }
+
+// Line height
+.leading-none { line-height: $cm-line-height-none; }
+.leading-tight { line-height: $cm-line-height-tight; }
+.leading-snug { line-height: $cm-line-height-snug; }
+.leading-normal { line-height: $cm-line-height-normal; }
+.leading-relaxed { line-height: $cm-line-height-relaxed; }
+.leading-loose { line-height: $cm-line-height-loose; }
+
+// Text alignment
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-justify { text-align: justify; }
+
+// Text transform
+.uppercase { text-transform: uppercase; }
+.lowercase { text-transform: lowercase; }
+.capitalize { text-transform: capitalize; }
+.normal-case { text-transform: none; }
+
+// Text decoration
+.underline { text-decoration: underline; }
+.line-through { text-decoration: line-through; }
+.no-underline { text-decoration: none; }
+
+// Text overflow
+.truncate { @include cm-truncate(1); }
+.truncate-2 { @include cm-truncate(2); }
+.truncate-3 { @include cm-truncate(3); }
+
+// Text colors
+.text-primary { color: $cm-color-primary; }
+.text-success { color: $cm-color-success; }
+.text-warning { color: $cm-color-warning; }
+.text-danger { color: $cm-color-danger; }
+.text-info { color: $cm-color-info; }
+.text-muted { color: $cm-neutral-500; }
+.text-black { color: $cm-color-black; }
+.text-white { color: $cm-color-white; }
+
+// Letter spacing
+.tracking-tight { letter-spacing: $cm-letter-spacing-tight; }
+.tracking-normal { letter-spacing: $cm-letter-spacing-normal; }
+.tracking-wide { letter-spacing: $cm-letter-spacing-wide; }
+.tracking-wider { letter-spacing: $cm-letter-spacing-wider; }
+.tracking-widest { letter-spacing: $cm-letter-spacing-widest; }
+
+// Font smoothing
+.antialiased { @include cm-font-smooth; }
+
+// Font family
+.font-sans { font-family: $cm-font-family-sans; }
+.font-serif { font-family: $cm-font-family-serif; }
+.font-mono { font-family: $cm-font-family-mono; }

@@ -1,0 +1,101 @@
+// Layout mixins
+@use 'common-mixin/mixins/flexbox' as *;
+@use 'common-mixin/mixins/grid' as *;
+@use 'common-mixin/mixins/sizing' as *;
+@use 'common-mixin/mixins/position' as *;
+@use 'common-mixin/mixins/responsive' as *;
+@use 'scss/variables/tokens' as *;
+@use 'scss/variables/config' as *;
+
+// App shell
+@mixin app-layout {
+  display: grid;
+  grid-template-rows: $header-height 1fr $footer-height;
+  grid-template-columns: 1fr;
+  min-height: 100vh;
+}
+
+@mixin app-layout-with-sidebar {
+  display: grid;
+  grid-template-rows: $header-height 1fr;
+  grid-template-columns: $sidebar-width 1fr;
+  min-height: 100vh;
+}
+
+// Page content
+@mixin page-content($max-width: 1200px) {
+  @include cm-container($max-width, 24px);
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+
+@mixin page-narrow($max-width: 768px) {
+  @include cm-container($max-width, 24px);
+  padding-top: 48px;
+  padding-bottom: 48px;
+}
+
+// Section layouts
+@mixin section-full {
+  width: 100%;
+  padding: 64px 0;
+}
+
+@mixin section-hero($min-height: 80vh) {
+  @include cm-flex-column-center;
+  min-height: $min-height;
+  padding: 80px 24px;
+  text-align: center;
+}
+
+// Responsive grid layouts
+@mixin responsive-grid($mobile: 1, $tablet: 2, $desktop: 3, $gap: 24px) {
+  display: grid;
+  grid-template-columns: repeat($mobile, 1fr);
+  gap: $gap;
+
+  @include cm-md {
+    grid-template-columns: repeat($tablet, 1fr);
+  }
+
+  @include cm-lg {
+    grid-template-columns: repeat($desktop, 1fr);
+  }
+}
+
+@mixin responsive-grid-4($gap: 24px) {
+  @include responsive-grid(1, 2, 4, $gap);
+}
+
+// Sidebar layout
+@mixin sidebar-layout($sidebar-pos: left) {
+  display: grid;
+  gap: $grid-gutter;
+
+  @include cm-lg {
+    @if $sidebar-pos == left {
+      grid-template-columns: $sidebar-width 1fr;
+    } @else {
+      grid-template-columns: 1fr $sidebar-width;
+    }
+  }
+}
+
+// Stack layout
+@mixin stack($gap: 16px) {
+  @include cm-flex-column;
+  gap: $gap;
+}
+
+// Cluster layout
+@mixin cluster($gap: 8px, $justify: flex-start) {
+  @include cm-flex-wrap($justify);
+  gap: $gap;
+}
+
+// Center layout
+@mixin center-layout($max-width: 1200px) {
+  max-width: $max-width;
+  margin-left: auto;
+  margin-right: auto;
+}

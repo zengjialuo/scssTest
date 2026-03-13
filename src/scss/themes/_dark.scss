@@ -1,0 +1,50 @@
+// Dark theme tokens
+@use 'common-mixin/variables/colors' as *;
+@use 'scss/variables/tokens' as *;
+
+[data-theme='dark'] {
+  // Brand (slightly adjusted for dark mode)
+  --color-primary: #818cf8;
+  --color-primary-hover: #a5b4fc;
+  --color-primary-active: #c7d2fe;
+  --color-secondary: #f472b6;
+  --color-secondary-hover: #f9a8d4;
+  --color-accent: #fb923c;
+
+  // Semantic
+  --color-success: #34d399;
+  --color-warning: #fbbf24;
+  --color-danger: #f87171;
+  --color-info: #22d3ee;
+
+  // Text
+  --color-text: #{$cm-neutral-50};
+  --color-text-secondary: #{$cm-neutral-300};
+  --color-text-muted: #{$cm-neutral-500};
+  --color-text-disabled: #{$cm-neutral-600};
+  --color-text-inverse: #{$cm-neutral-900};
+
+  // Background
+  --color-bg: #0f172a;
+  --color-bg-secondary: #1e293b;
+  --color-bg-tertiary: #334155;
+
+  // Border
+  --color-border: #334155;
+  --color-border-strong: #475569;
+  --color-border-muted: #1e293b;
+
+  // Surface
+  --color-surface: #1e293b;
+  --color-surface-raised: #334155;
+  --color-surface-overlay: rgba(0, 0, 0, 0.7);
+
+  // Focus
+  --color-focus-ring: rgba(129, 140, 248, 0.4);
+
+  // Status (unchanged in dark mode)
+  --color-status-online: #{$status-online};
+  --color-status-away: #{$status-away};
+  --color-status-busy: #{$status-busy};
+  --color-status-offline: #{$status-offline};
+}

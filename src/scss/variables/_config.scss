@@ -1,0 +1,46 @@
+// Project configuration
+$enable-dark-mode: true !default;
+$enable-rtl: false !default;
+$enable-animations: true !default;
+$enable-transitions: true !default;
+$enable-gradients: true !default;
+$enable-shadows: true !default;
+$enable-rounded: true !default;
+$enable-caret: true !default;
+$enable-smooth-scroll: true !default;
+
+// Grid config
+$grid-columns: 12 !default;
+$grid-gutter: 24px !default;
+$grid-container-padding: 16px !default;
+
+// Z-index layers
+$z-layers: (
+  'below': -1,
+  'base': 0,
+  'raised': 1,
+  'dropdown': 100,
+  'sticky': 200,
+  'fixed': 300,
+  'modal-bg': 400,
+  'modal': 500,
+  'popover': 600,
+  'tooltip': 700,
+  'toast': 800,
+  'overlay': 900,
+) !default;
+
+// Timing functions
+$ease-in: cubic-bezier(0.4, 0, 1, 1) !default;
+$ease-out: cubic-bezier(0, 0, 0.2, 1) !default;
+$ease-in-out: cubic-bezier(0.4, 0, 0.2, 1) !default;
+$ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1) !default;
+$ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55) !default;
+
+// Duration scale
+$duration-instant: 50ms !default;
+$duration-fast: 100ms !default;
+$duration-normal: 200ms !default;
+$duration-slow: 300ms !default;
+$duration-slower: 500ms !default;
+$duration-slowest: 700ms !default;

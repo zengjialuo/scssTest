@@ -1,0 +1,46 @@
+// Design tokens - project-specific overrides and extensions
+@use 'sass:color';
+@use 'common-mixin/variables/colors' as cm-colors;
+
+// Brand colors
+$brand-primary: #6366f1 !default;
+$brand-primary-hover: #4f46e5 !default;
+$brand-primary-active: #4338ca !default;
+$brand-secondary: #ec4899 !default;
+$brand-secondary-hover: #db2777 !default;
+$brand-accent: #f97316 !default;
+
+// Semantic tokens derived from brand
+$color-action: $brand-primary;
+$color-action-hover: $brand-primary-hover;
+$color-link: $brand-primary;
+$color-link-visited: color.adjust($brand-primary, $lightness: -20%);
+$color-focus-ring: rgba($brand-primary, 0.4);
+
+// Surface tokens
+$surface-page: #ffffff;
+$surface-card: #ffffff;
+$surface-overlay: rgba(0, 0, 0, 0.5);
+$surface-tooltip: #1f2937;
+$surface-code: #f8fafc;
+
+// Status tokens
+$status-online: #22c55e;
+$status-away: #f59e0b;
+$status-busy: #ef4444;
+$status-offline: #9ca3af;
+
+// Component-specific tokens
+$button-height-sm: 32px;
+$button-height-md: 40px;
+$button-height-lg: 48px;
+$button-height-xl: 56px;
+
+$input-height-sm: 32px;
+$input-height-md: 40px;
+$input-height-lg: 48px;
+
+$header-height: 64px;
+$sidebar-width: 280px;
+$sidebar-collapsed-width: 64px;
+$footer-height: 80px;

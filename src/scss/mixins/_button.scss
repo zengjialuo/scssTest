@@ -1,0 +1,110 @@
+// Button mixins
+@use 'sass:color';
+@use 'common-mixin/mixins/flexbox' as *;
+@use 'common-mixin/mixins/animation' as *;
+@use 'common-mixin/mixins/effects' as *;
+@use 'common-mixin/variables/typography' as *;
+@use 'scss/variables/component-vars' as *;
+@use 'scss/variables/tokens' as *;
+
+@mixin button-base {
+  @include cm-inline-flex(center, center);
+  @include cm-transition(background-color color border-color box-shadow, 150ms);
+  font-family: inherit;
+  font-weight: $btn-font-weight;
+  line-height: 1;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  border: 1px solid transparent;
+  text-decoration: none;
+
+  &:disabled,
+  &[aria-disabled='true'] {
+    opacity: $btn-disabled-opacity;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  &:focus-visible {
+    outline: $btn-focus-ring-width solid $color-focus-ring;
+    outline-offset: $btn-focus-ring-offset;
+  }
+}
+
+@mixin button-size($size: md) {
+  @if $size == sm {
+    font-size: $btn-font-size-sm;
+    padding: 6px 12px;
+    height: $button-height-sm;
+    border-radius: $btn-border-radius;
+  } @else if $size == md {
+    font-size: $btn-font-size-md;
+    padding: 8px 16px;
+    height: $button-height-md;
+    border-radius: $btn-border-radius;
+  } @else if $size == lg {
+    font-size: $btn-font-size-lg;
+    padding: 10px 20px;
+    height: $button-height-lg;
+    border-radius: $btn-border-radius;
+  } @else if $size == xl {
+    font-size: $cm-font-size-lg;
+    padding: 12px 24px;
+    height: $button-height-xl;
+    border-radius: $btn-border-radius;
+  }
+}
+
+@mixin button-variant($bg, $color, $border: $bg, $hover-bg: color.adjust($bg, $lightness: -8%), $hover-border: $hover-bg) {
+  background-color: $bg;
+  color: $color;
+  border-color: $border;
+
+  &:hover:not(:disabled) {
+    background-color: $hover-bg;
+    border-color: $hover-border;
+  }
+
+  &:active:not(:disabled) {
+    background-color: color.adjust($bg, $lightness: -15%);
+  }
+}
+
+@mixin button-outline($color, $hover-bg: $color) {
+  background-color: transparent;
+  color: $color;
+  border-color: $color;
+
+  &:hover:not(:disabled) {
+    background-color: $hover-bg;
+    color: #ffffff;
+  }
+
+  &:active:not(:disabled) {
+    background-color: color.adjust($hover-bg, $lightness: -10%);
+  }
+}
+
+@mixin button-ghost($color) {
+  background-color: transparent;
+  color: $color;
+  border-color: transparent;
+
+  &:hover:not(:disabled) {
+    background-color: rgba($color, 0.1);
+  }
+
+  &:active:not(:disabled) {
+    background-color: rgba($color, 0.15);
+  }
+}
+
+@mixin button-icon($size: md) {
+  @include button-size($size);
+  padding: 0;
+  @if $size == sm { width: $button-height-sm; }
+  @else if $size == md { width: $button-height-md; }
+  @else if $size == lg { width: $button-height-lg; }
+  @else if $size == xl { width: $button-height-xl; }
+}

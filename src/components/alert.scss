@@ -1,0 +1,119 @@
+// Alert component
+@use 'sass:color';
+@use 'common-mixin/mixins/flexbox' as *;
+@use 'common-mixin/mixins/animation' as *;
+@use 'common-mixin/mixins/position' as *;
+@use 'common-mixin/variables/colors' as *;
+@use 'common-mixin/variables/borders' as *;
+@use 'scss/variables/tokens' as *;
+
+.alert {
+  @include cm-flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: $cm-radius-lg;
+  border: 1px solid transparent;
+  font-size: 14px;
+  line-height: 1.5;
+  @include cm-slide-in-up(250ms);
+
+  &__icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  &__content {
+    flex: 1;
+  }
+
+  &__title {
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+
+  &__message {
+    opacity: 0.9;
+  }
+
+  &__close {
+    @include cm-flex-center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: none;
+    background: none;
+    cursor: pointer;
+    opacity: 0.6;
+    flex-shrink: 0;
+    align-self: flex-start;
+
+    &:hover { opacity: 1; }
+  }
+}
+
+// Variants
+.alert--success {
+  background-color: color.adjust($cm-color-success, $lightness: 52%);
+  border-color: color.adjust($cm-color-success, $lightness: 35%);
+  color: color.adjust($cm-color-success, $lightness: -20%);
+}
+
+.alert--warning {
+  background-color: color.adjust($cm-color-warning, $lightness: 42%);
+  border-color: color.adjust($cm-color-warning, $lightness: 25%);
+  color: color.adjust($cm-color-warning, $lightness: -25%);
+}
+
+.alert--danger {
+  background-color: color.adjust($cm-color-danger, $lightness: 38%);
+  border-color: color.adjust($cm-color-danger, $lightness: 22%);
+  color: color.adjust($cm-color-danger, $lightness: -15%);
+}
+
+.alert--info {
+  background-color: color.adjust($cm-color-info, $lightness: 45%);
+  border-color: color.adjust($cm-color-info, $lightness: 25%);
+  color: color.adjust($cm-color-info, $lightness: -20%);
+}
+
+.alert--primary {
+  background-color: rgba($brand-primary, 0.08);
+  border-color: rgba($brand-primary, 0.25);
+  color: color.adjust($brand-primary, $lightness: -15%);
+}
+
+.alert--neutral {
+  background-color: $cm-neutral-50;
+  border-color: $cm-neutral-200;
+  color: $cm-neutral-700;
+}
+
+// With left border accent
+.alert--accent {
+  border-left-width: 4px;
+  border-radius: 0 $cm-radius-lg $cm-radius-lg 0;
+}
+
+// Toast style (top-right notification)
+.toast-container {
+  @include cm-fixed(16px, 16px, null, null);
+  z-index: 800;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  pointer-events: none;
+  max-width: 380px;
+  width: calc(100% - 32px);
+}
+
+.toast {
+  pointer-events: all;
+  @include cm-slide-in-up(250ms);
+
+  &--success { @extend .alert--success; }
+  &--warning { @extend .alert--warning; }
+  &--danger { @extend .alert--danger; }
+  &--info { @extend .alert--info; }
+}

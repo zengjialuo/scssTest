@@ -1,0 +1,57 @@
+// Spacing utilities
+@use 'common-mixin/variables/spacing' as *;
+
+// Margin utilities
+$spacing-values: (
+  0: 0,
+  1: $cm-spacing-1,
+  2: $cm-spacing-2,
+  3: $cm-spacing-3,
+  4: $cm-spacing-4,
+  5: $cm-spacing-5,
+  6: $cm-spacing-6,
+  8: $cm-spacing-8,
+  10: $cm-spacing-10,
+  12: $cm-spacing-12,
+  16: $cm-spacing-16,
+  auto: auto,
+);
+
+@each $key, $value in $spacing-values {
+  .m-#{$key} { margin: $value; }
+  .mt-#{$key} { margin-top: $value; }
+  .mr-#{$key} { margin-right: $value; }
+  .mb-#{$key} { margin-bottom: $value; }
+  .ml-#{$key} { margin-left: $value; }
+  .mx-#{$key} { margin-left: $value; margin-right: $value; }
+  .my-#{$key} { margin-top: $value; margin-bottom: $value; }
+}
+
+@each $key, $value in $spacing-values {
+  @if $key != auto {
+    .p-#{$key} { padding: $value; }
+    .pt-#{$key} { padding-top: $value; }
+    .pr-#{$key} { padding-right: $value; }
+    .pb-#{$key} { padding-bottom: $value; }
+    .pl-#{$key} { padding-left: $value; }
+    .px-#{$key} { padding-left: $value; padding-right: $value; }
+    .py-#{$key} { padding-top: $value; padding-bottom: $value; }
+  }
+}
+
+// Gap utilities
+@each $key, $value in $spacing-values {
+  @if $key != auto {
+    .gap-#{$key} { gap: $value; }
+    .gap-x-#{$key} { column-gap: $value; }
+    .gap-y-#{$key} { row-gap: $value; }
+  }
+}
+
+// Space between children
+.space-x-2 > * + * { margin-left: $cm-spacing-2; }
+.space-x-4 > * + * { margin-left: $cm-spacing-4; }
+.space-x-6 > * + * { margin-left: $cm-spacing-6; }
+.space-y-2 > * + * { margin-top: $cm-spacing-2; }
+.space-y-4 > * + * { margin-top: $cm-spacing-4; }
+.space-y-6 > * + * { margin-top: $cm-spacing-6; }

@@ -1,0 +1,188 @@
+// Home page styles
+@use 'common-mixin/mixins/flexbox' as *;
+@use 'common-mixin/mixins/grid' as *;
+@use 'common-mixin/mixins/responsive' as *;
+@use 'common-mixin/mixins/animation' as *;
+@use 'common-mixin/mixins/effects' as *;
+@use 'common-mixin/mixins/position' as *;
+@use 'common-mixin/variables/colors' as *;
+@use 'common-mixin/variables/typography' as *;
+@use 'scss/mixins/layout' as *;
+@use 'scss/variables/tokens' as *;
+
+// Hero section
+.hero {
+  @include section-hero(90vh);
+  background: linear-gradient(135deg, $brand-primary 0%, $brand-secondary 100%);
+  color: #ffffff;
+  overflow: hidden;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 70% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+  }
+
+  &__content {
+    position: relative;
+    max-width: 800px;
+    @include cm-fade-in(600ms);
+  }
+
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 100px;
+    font-size: $cm-font-size-sm;
+    font-weight: $cm-font-weight-medium;
+    margin-bottom: 24px;
+    backdrop-filter: blur(8px);
+  }
+
+  &__title {
+    font-size: $cm-font-size-5xl;
+    font-weight: $cm-font-weight-bold;
+    line-height: $cm-line-height-tight;
+    margin-bottom: 24px;
+
+    @include cm-respond-below('md') {
+      font-size: $cm-font-size-4xl;
+    }
+  }
+
+  &__subtitle {
+    font-size: $cm-font-size-xl;
+    line-height: $cm-line-height-relaxed;
+    opacity: 0.85;
+    margin-bottom: 40px;
+    max-width: 600px;
+  }
+
+  &__actions {
+    @include cm-flex-center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  &__scroll-indicator {
+    @include cm-absolute(null, null, 32px, 50%);
+    transform: translateX(-50%);
+    @include cm-flex-column-center;
+    gap: 6px;
+    font-size: $cm-font-size-xs;
+    opacity: 0.7;
+    @include cm-bounce;
+  }
+}
+
+// Features section
+.features {
+  padding: 80px 24px;
+
+  &__header {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 64px;
+  }
+
+  &__overline {
+    font-size: $cm-font-size-sm;
+    font-weight: $cm-font-weight-semibold;
+    text-transform: uppercase;
+    letter-spacing: $cm-letter-spacing-wider;
+    color: $brand-primary;
+    margin-bottom: 12px;
+  }
+
+  &__title {
+    font-size: $cm-font-size-3xl;
+    font-weight: $cm-font-weight-bold;
+    margin-bottom: 16px;
+    color: $cm-neutral-900;
+  }
+
+  &__description {
+    font-size: $cm-font-size-lg;
+    color: $cm-neutral-500;
+    line-height: $cm-line-height-relaxed;
+  }
+
+  &__grid {
+    @include responsive-grid(1, 2, 3, 32px);
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  &__item {
+    padding: 32px;
+    border-radius: 16px;
+    border: 1px solid $cm-neutral-100;
+    @include cm-transition(box-shadow transform, 250ms);
+
+    &:hover {
+      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
+      transform: translateY(-4px);
+    }
+  }
+
+  &__icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, $brand-primary, $brand-secondary);
+    @include cm-flex-center;
+    margin-bottom: 20px;
+    color: #ffffff;
+  }
+
+  &__item-title {
+    font-size: $cm-font-size-lg;
+    font-weight: $cm-font-weight-semibold;
+    margin-bottom: 8px;
+    color: $cm-neutral-900;
+  }
+
+  &__item-description {
+    font-size: $cm-font-size-sm;
+    color: $cm-neutral-500;
+    line-height: $cm-line-height-relaxed;
+  }
+}
+
+// Stats section
+.stats {
+  padding: 60px 24px;
+  background: $cm-neutral-900;
+  color: #ffffff;
+  text-align: center;
+
+  &__grid {
+    @include responsive-grid(1, 2, 4, 24px);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  &__number {
+    font-size: $cm-font-size-5xl;
+    font-weight: $cm-font-weight-bold;
+    background: linear-gradient(135deg, $brand-primary, $brand-secondary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+    line-height: 1;
+  }
+
+  &__label {
+    font-size: $cm-font-size-sm;
+    color: $cm-neutral-400;
+    text-transform: uppercase;
+    letter-spacing: $cm-letter-spacing-wider;
+  }
+}

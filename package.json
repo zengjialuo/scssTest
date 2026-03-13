@@ -1,0 +1,15 @@
+{
+  "name": "scss-compilation-research",
+  "version": "1.0.0",
+  "description": "Project for researching SCSS compilation speed",
+  "scripts": {
+    "build": "node scripts/build.js",
+    "build:sass": "node scripts/build-sass.js",
+    "build:dart-sass": "sass --load-path=src --load-path=node_modules src/index.scss dist/index.css",
+    "build:all": "node scripts/build-all.js"
+  },
+  "devDependencies": {
+    "sass": "^1.70.0",
+    "glob": "^10.3.10"
+  }
+}

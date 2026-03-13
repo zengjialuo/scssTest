@@ -1,0 +1,104 @@
+// Badge component
+@use 'sass:color';
+@use 'common-mixin/mixins/flexbox' as *;
+@use 'common-mixin/variables/colors' as *;
+@use 'scss/variables/component-vars' as *;
+@use 'scss/variables/tokens' as *;
+
+.badge {
+  @include cm-inline-flex(center, center);
+  font-size: $badge-font-size;
+  font-weight: $badge-font-weight;
+  padding: $badge-padding;
+  border-radius: $badge-border-radius;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+// Variants
+.badge--primary {
+  background-color: rgba($brand-primary, 0.15);
+  color: color.adjust($brand-primary, $lightness: -15%);
+}
+
+.badge--secondary {
+  background-color: rgba($brand-secondary, 0.15);
+  color: color.adjust($brand-secondary, $lightness: -10%);
+}
+
+.badge--success {
+  background-color: rgba($cm-color-success, 0.15);
+  color: color.adjust($cm-color-success, $lightness: -15%);
+}
+
+.badge--warning {
+  background-color: rgba($cm-color-warning, 0.15);
+  color: color.adjust($cm-color-warning, $lightness: -20%);
+}
+
+.badge--danger {
+  background-color: rgba($cm-color-danger, 0.15);
+  color: color.adjust($cm-color-danger, $lightness: -10%);
+}
+
+.badge--neutral {
+  background-color: $cm-neutral-100;
+  color: $cm-neutral-700;
+}
+
+// Solid variants
+.badge--primary-solid { background-color: $brand-primary; color: #ffffff; }
+.badge--success-solid { background-color: $cm-color-success; color: #ffffff; }
+.badge--danger-solid { background-color: $cm-color-danger; color: #ffffff; }
+.badge--warning-solid { background-color: $cm-color-warning; color: #ffffff; }
+
+// Outlined
+.badge--outline {
+  background-color: transparent;
+  border: 1px solid currentColor;
+}
+
+// Dot badge
+.badge--dot {
+  @include cm-inline-flex(flex-start, center);
+  gap: 6px;
+  border-radius: $badge-border-radius;
+  background: none;
+  padding: 0;
+
+  &::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: currentColor;
+    flex-shrink: 0;
+  }
+}
+
+// Count badge (notification style)
+.badge--count {
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border-radius: 9px;
+  font-size: 11px;
+  font-weight: 600;
+  background-color: $cm-color-danger;
+  color: #ffffff;
+  text-align: center;
+}
+
+// Status dot
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+
+  &--online { background-color: $status-online; }
+  &--away { background-color: $status-away; }
+  &--busy { background-color: $status-busy; }
+  &--offline { background-color: $status-offline; }
+}

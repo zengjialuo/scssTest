@@ -1,0 +1,70 @@
+// Component-level variables
+@use 'common-mixin/variables/colors' as *;
+@use 'common-mixin/variables/spacing' as *;
+@use 'common-mixin/variables/typography' as *;
+@use 'common-mixin/variables/borders' as *;
+
+// Button
+$btn-font-size-sm: $cm-font-size-xs;
+$btn-font-size-md: $cm-font-size-sm;
+$btn-font-size-lg: $cm-font-size-base;
+$btn-font-weight: $cm-font-weight-medium;
+$btn-border-radius: $cm-radius-md;
+$btn-disabled-opacity: 0.6;
+$btn-focus-ring-width: 3px;
+$btn-focus-ring-offset: 2px;
+
+// Card
+$card-padding: $cm-spacing-6;
+$card-border-radius: $cm-radius-lg;
+$card-border-color: $cm-color-border;
+$card-bg: #ffffff;
+$card-header-padding: $cm-spacing-4 $cm-spacing-6;
+$card-footer-padding: $cm-spacing-4 $cm-spacing-6;
+
+// Form inputs
+$input-font-size: $cm-font-size-sm;
+$input-line-height: $cm-line-height-normal;
+$input-padding: $cm-spacing-2 $cm-spacing-3;
+$input-border-radius: $cm-radius-md;
+$input-border-color: $cm-neutral-300;
+$input-focus-border-color: #6366f1;
+$input-placeholder-color: $cm-neutral-400;
+$input-disabled-bg: $cm-neutral-100;
+
+// Badge
+$badge-font-size: $cm-font-size-xs;
+$badge-font-weight: $cm-font-weight-medium;
+$badge-padding: 2px $cm-spacing-2;
+$badge-border-radius: $cm-radius-full;
+
+// Tooltip
+$tooltip-font-size: $cm-font-size-xs;
+$tooltip-max-width: 200px;
+$tooltip-padding: $cm-spacing-1 $cm-spacing-2;
+$tooltip-border-radius: $cm-radius-base;
+$tooltip-bg: $cm-neutral-900;
+$tooltip-color: #ffffff;
+$tooltip-arrow-size: 6px;
+
+// Modal
+$modal-backdrop-opacity: 0.5;
+$modal-padding: $cm-spacing-6;
+$modal-border-radius: $cm-radius-xl;
+$modal-max-width-sm: 400px;
+$modal-max-width-md: 600px;
+$modal-max-width-lg: 800px;
+$modal-max-width-xl: 1000px;
+
+// Table
+$table-cell-padding: $cm-spacing-3 $cm-spacing-4;
+$table-border-color: $cm-neutral-200;
+$table-header-bg: $cm-neutral-50;
+$table-striped-bg: rgba($cm-neutral-50, 0.5);
+$table-hover-bg: rgba($cm-neutral-100, 0.5);
+
+// Navigation
+$nav-link-padding: $cm-spacing-2 $cm-spacing-3;
+$nav-link-font-size: $cm-font-size-sm;
+$nav-link-font-weight: $cm-font-weight-medium;
+$nav-item-gap: $cm-spacing-1;

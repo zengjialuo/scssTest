@@ -1,0 +1,117 @@
+// Button component
+// Uses includepath: `src` and `node_modules`
+@use 'common-mixin/mixins/flexbox' as *;
+@use 'common-mixin/variables/colors' as *;
+@use 'scss/mixins/button' as *;
+@use 'scss/variables/tokens' as *;
+
+.btn {
+  @include button-base;
+  @include button-size(md);
+}
+
+// Sizes
+.btn--sm { @include button-size(sm); }
+.btn--lg { @include button-size(lg); }
+.btn--xl { @include button-size(xl); }
+
+// Solid variants
+.btn--primary {
+  @include button-variant($brand-primary, #ffffff);
+}
+
+.btn--secondary {
+  @include button-variant($brand-secondary, #ffffff);
+}
+
+.btn--success {
+  @include button-variant($cm-color-success, #ffffff);
+}
+
+.btn--danger {
+  @include button-variant($cm-color-danger, #ffffff);
+}
+
+.btn--warning {
+  @include button-variant($cm-color-warning, #ffffff);
+}
+
+.btn--neutral {
+  @include button-variant($cm-neutral-200, $cm-neutral-800, $cm-neutral-200, $cm-neutral-300);
+}
+
+// Outline variants
+.btn--outline-primary {
+  @include button-outline($brand-primary);
+}
+
+.btn--outline-secondary {
+  @include button-outline($brand-secondary);
+}
+
+.btn--outline-danger {
+  @include button-outline($cm-color-danger);
+}
+
+// Ghost variants
+.btn--ghost-primary {
+  @include button-ghost($brand-primary);
+}
+
+.btn--ghost-neutral {
+  @include button-ghost($cm-neutral-700);
+}
+
+// Full width
+.btn--block {
+  width: 100%;
+  justify-content: center;
+}
+
+// Icon button
+.btn--icon {
+  @include button-icon(md);
+}
+
+.btn--icon-sm {
+  @include button-icon(sm);
+}
+
+.btn--icon-lg {
+  @include button-icon(lg);
+}
+
+// Loading state
+.btn--loading {
+  position: relative;
+  pointer-events: none;
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border: 2px solid currentColor;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: cm-keyframe-spin 0.7s linear infinite;
+    margin-left: 8px;
+  }
+}
+
+// Button group
+.btn-group {
+  @include cm-inline-flex;
+  gap: 0;
+
+  .btn {
+    border-radius: 0;
+
+    &:first-child { border-radius: 6px 0 0 6px; }
+    &:last-child { border-radius: 0 6px 6px 0; }
+
+    &:not(:last-child) {
+      border-right-color: transparent;
+    }
+  }
+}

@@ -1,0 +1,51 @@
+// Light theme tokens
+@use 'common-mixin/variables/colors' as *;
+@use 'scss/variables/tokens' as *;
+
+:root,
+[data-theme='light'] {
+  // Brand
+  --color-primary: #{$brand-primary};
+  --color-primary-hover: #{$brand-primary-hover};
+  --color-primary-active: #{$brand-primary-active};
+  --color-secondary: #{$brand-secondary};
+  --color-secondary-hover: #{$brand-secondary-hover};
+  --color-accent: #{$brand-accent};
+
+  // Semantic
+  --color-success: #{$cm-color-success};
+  --color-warning: #{$cm-color-warning};
+  --color-danger: #{$cm-color-danger};
+  --color-info: #{$cm-color-info};
+
+  // Text
+  --color-text: #{$cm-neutral-900};
+  --color-text-secondary: #{$cm-neutral-600};
+  --color-text-muted: #{$cm-neutral-400};
+  --color-text-disabled: #{$cm-neutral-300};
+  --color-text-inverse: #ffffff;
+
+  // Background
+  --color-bg: #ffffff;
+  --color-bg-secondary: #{$cm-neutral-50};
+  --color-bg-tertiary: #{$cm-neutral-100};
+
+  // Border
+  --color-border: #{$cm-neutral-200};
+  --color-border-strong: #{$cm-neutral-300};
+  --color-border-muted: #{$cm-neutral-100};
+
+  // Surface
+  --color-surface: #ffffff;
+  --color-surface-raised: #ffffff;
+  --color-surface-overlay: rgba(0, 0, 0, 0.5);
+
+  // Focus
+  --color-focus-ring: #{rgba($brand-primary, 0.4)};
+
+  // Status
+  --color-status-online: #{$status-online};
+  --color-status-away: #{$status-away};
+  --color-status-busy: #{$status-busy};
+  --color-status-offline: #{$status-offline};
+}

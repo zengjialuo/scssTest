@@ -1,0 +1,122 @@
+// Card component
+@use 'sass:color';
+@use 'common-mixin/mixins/flexbox' as *;
+@use 'common-mixin/mixins/effects' as *;
+@use 'common-mixin/mixins/responsive' as *;
+@use 'common-mixin/variables/colors' as *;
+@use 'scss/mixins/card' as *;
+@use 'scss/variables/component-vars' as *;
+@use 'scss/variables/tokens' as *;
+
+// Base card
+.card {
+  @include card-base;
+}
+
+// Padded card
+.card--padded {
+  @include card-padded;
+}
+
+// Elevated card
+.card--elevated {
+  @include card-elevated;
+}
+
+// Interactive card
+.card--interactive {
+  @include card-interactive;
+}
+
+// Compact card
+.card--compact {
+  @include card-padded(calc($card-padding / 2));
+}
+
+// Card with header/body/footer
+.card-header {
+  @include card-header;
+}
+
+.card-body {
+  @include card-body;
+}
+
+.card-footer {
+  @include card-footer;
+}
+
+// Horizontal card
+.card--horizontal {
+  @include card-horizontal;
+}
+
+// Card with cover image
+.card--cover {
+  @include card-base;
+  @include card-cover-image;
+
+  .card-body {
+    padding: $card-padding;
+  }
+}
+
+// Card variants
+.card--primary {
+  @include card-base;
+  border-color: $brand-primary;
+  border-left: 4px solid $brand-primary;
+  padding: $card-padding;
+}
+
+.card--success {
+  @include card-base;
+  border-color: $cm-color-success;
+  border-left: 4px solid $cm-color-success;
+  padding: $card-padding;
+  background-color: color.adjust($cm-color-success, $lightness: 52%);
+}
+
+.card--warning {
+  @include card-base;
+  border-color: $cm-color-warning;
+  border-left: 4px solid $cm-color-warning;
+  padding: $card-padding;
+  background-color: color.adjust($cm-color-warning, $lightness: 42%);
+}
+
+.card--danger {
+  @include card-base;
+  border-color: $cm-color-danger;
+  border-left: 4px solid $cm-color-danger;
+  padding: $card-padding;
+  background-color: color.adjust($cm-color-danger, $lightness: 38%);
+}
+
+// Card grid
+.card-grid {
+  @include cm-md {
+    @include card-grid(2, 20px);
+  }
+
+  @include cm-lg {
+    @include card-grid(3, 24px);
+  }
+}
+
+// Skeleton card
+.card--skeleton {
+  @include card-base;
+  padding: $card-padding;
+
+  .skeleton-line {
+    height: 12px;
+    background: linear-gradient(90deg, $cm-neutral-200 25%, $cm-neutral-100 50%, $cm-neutral-200 75%);
+    background-size: 200% 100%;
+    animation: cm-keyframe-pulse 1.5s ease-in-out infinite;
+    border-radius: 4px;
+    margin-bottom: 8px;
+
+    &:last-child { width: 60%; }
+  }
+}

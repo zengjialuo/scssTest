@@ -1,0 +1,244 @@
+// Dashboard page styles
+@use 'common-mixin/mixins/flexbox' as *;
+@use 'common-mixin/mixins/grid' as *;
+@use 'common-mixin/mixins/responsive' as *;
+@use 'common-mixin/variables/colors' as *;
+@use 'common-mixin/variables/typography' as *;
+@use 'common-mixin/variables/shadows' as *;
+@use 'scss/mixins/layout' as *;
+@use 'scss/mixins/card' as *;
+@use 'scss/variables/tokens' as *;
+@use 'scss/variables/component-vars' as *;
+
+// Dashboard layout
+.dashboard {
+  @include app-layout-with-sidebar;
+  background-color: #f8fafc;
+
+  @include cm-respond-below('lg') {
+    grid-template-columns: 1fr;
+  }
+}
+
+.dashboard-content {
+  overflow: auto;
+  padding: 24px;
+}
+
+// Page header
+.page-header {
+  @include cm-flex-between;
+  margin-bottom: 24px;
+
+  @include cm-respond-below('sm') {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  &__title {
+    font-size: $cm-font-size-2xl;
+    font-weight: $cm-font-weight-bold;
+    color: $cm-neutral-900;
+  }
+
+  &__subtitle {
+    font-size: $cm-font-size-sm;
+    color: $cm-neutral-500;
+    margin-top: 4px;
+  }
+
+  &__actions {
+    @include cm-inline-flex;
+    gap: 8px;
+  }
+}
+
+// Metric cards
+.metric-grid {
+  @include responsive-grid(1, 2, 4, 16px);
+  margin-bottom: 24px;
+}
+
+.metric-card {
+  @include card-padded(20px);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+  }
+
+  &--primary::before { background: $brand-primary; }
+  &--success::before { background: $cm-color-success; }
+  &--warning::before { background: $cm-color-warning; }
+  &--danger::before { background: $cm-color-danger; }
+
+  &__header {
+    @include cm-flex-between;
+    margin-bottom: 16px;
+  }
+
+  &__label {
+    font-size: $cm-font-size-sm;
+    font-weight: $cm-font-weight-medium;
+    color: $cm-neutral-500;
+  }
+
+  &__icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    @include cm-flex-center;
+  }
+
+  &__value {
+    font-size: $cm-font-size-3xl;
+    font-weight: $cm-font-weight-bold;
+    color: $cm-neutral-900;
+    margin-bottom: 8px;
+    line-height: 1;
+  }
+
+  &__change {
+    @include cm-inline-flex(flex-start, center);
+    gap: 4px;
+    font-size: $cm-font-size-sm;
+
+    &--up { color: $cm-color-success; }
+    &--down { color: $cm-color-danger; }
+  }
+
+  &__period {
+    font-size: $cm-font-size-xs;
+    color: $cm-neutral-400;
+    margin-left: 4px;
+  }
+}
+
+// Chart card
+.chart-card {
+  @include card-base;
+  margin-bottom: 24px;
+
+  &__header {
+    @include cm-flex-between;
+    padding: 20px 24px;
+    border-bottom: 1px solid $cm-color-border;
+  }
+
+  &__title {
+    font-size: $cm-font-size-base;
+    font-weight: $cm-font-weight-semibold;
+    color: $cm-neutral-900;
+  }
+
+  &__actions {
+    @include cm-inline-flex;
+    gap: 8px;
+  }
+
+  &__body {
+    padding: 24px;
+    min-height: 300px;
+    @include cm-flex-center;
+  }
+
+  &__legend {
+    @include cm-flex-start;
+    gap: 16px;
+    padding: 12px 24px;
+    border-top: 1px solid $cm-color-border;
+    flex-wrap: wrap;
+  }
+
+  &__legend-item {
+    @include cm-inline-flex(flex-start, center);
+    gap: 6px;
+    font-size: $cm-font-size-xs;
+    color: $cm-neutral-600;
+
+    &::before {
+      content: '';
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+      background-color: currentColor;
+    }
+  }
+}
+
+// Two-column layout
+.dashboard-row {
+  display: grid;
+  gap: 24px;
+  margin-bottom: 24px;
+
+  @include cm-lg {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+// Activity feed
+.activity-feed {
+  @include card-base;
+
+  &__header {
+    @include cm-flex-between;
+    padding: 20px 24px;
+    border-bottom: 1px solid $cm-color-border;
+  }
+
+  &__title {
+    font-size: $cm-font-size-base;
+    font-weight: $cm-font-weight-semibold;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__item {
+    @include cm-flex-start;
+    gap: 12px;
+    padding: 14px 24px;
+    border-bottom: 1px solid $cm-neutral-100;
+
+    &:last-child { border-bottom: none; }
+
+    &:hover { background-color: $cm-neutral-50; }
+  }
+
+  &__avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    background-color: $cm-neutral-200;
+  }
+
+  &__content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__text {
+    font-size: $cm-font-size-sm;
+    color: $cm-neutral-700;
+    line-height: 1.4;
+  }
+
+  &__time {
+    font-size: $cm-font-size-xs;
+    color: $cm-neutral-400;
+    margin-top: 2px;
+  }
+}

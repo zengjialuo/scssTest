@@ -1,0 +1,170 @@
+// Auth pages (login, register, forgot password)
+@use 'sass:color';
+@use 'common-mixin/mixins/flexbox' as *;
+@use 'common-mixin/mixins/sizing' as *;
+@use 'common-mixin/mixins/effects' as *;
+@use 'common-mixin/mixins/animation' as *;
+@use 'common-mixin/mixins/responsive' as *;
+@use 'common-mixin/variables/colors' as *;
+@use 'common-mixin/variables/typography' as *;
+@use 'scss/mixins/card' as *;
+@use 'scss/mixins/layout' as *;
+@use 'scss/variables/tokens' as *;
+
+// Auth layout
+.auth-layout {
+  @include cm-flex;
+  min-height: 100vh;
+
+  &__panel {
+    @include cm-flex-column-center;
+    flex: 1;
+    padding: 48px 24px;
+
+    @include cm-respond-below('md') {
+      padding: 32px 16px;
+    }
+  }
+
+  &__brand-panel {
+    @extend .auth-layout__panel;
+    background: linear-gradient(135deg, $brand-primary 0%, color.adjust($brand-secondary, $lightness: -10%) 100%);
+    color: #ffffff;
+    flex: 0 0 44%;
+    overflow: hidden;
+    position: relative;
+
+    @include cm-respond-below('lg') {
+      display: none;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+  }
+}
+
+// Auth card
+.auth-card {
+  @include card-padded(40px);
+  width: 100%;
+  max-width: 440px;
+  @include cm-shadow(xl);
+  @include cm-scale-in(300ms);
+}
+
+// Auth header
+.auth-header {
+  text-align: center;
+  margin-bottom: 32px;
+
+  &__logo {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 16px;
+    background: linear-gradient(135deg, $brand-primary, $brand-secondary);
+    border-radius: 12px;
+    @include cm-flex-center;
+    color: #ffffff;
+  }
+
+  &__title {
+    font-size: $cm-font-size-2xl;
+    font-weight: $cm-font-weight-bold;
+    color: $cm-neutral-900;
+    margin-bottom: 8px;
+  }
+
+  &__subtitle {
+    font-size: $cm-font-size-sm;
+    color: $cm-neutral-500;
+  }
+}
+
+// Auth form
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__divider {
+    @include cm-flex-center;
+    gap: 12px;
+    color: $cm-neutral-400;
+    font-size: $cm-font-size-sm;
+    margin: 8px 0;
+
+    &::before,
+    &::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background-color: $cm-neutral-200;
+    }
+  }
+
+  &__social-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  &__footer {
+    text-align: center;
+    font-size: $cm-font-size-sm;
+    color: $cm-neutral-500;
+    margin-top: 8px;
+
+    a {
+      color: $brand-primary;
+      font-weight: $cm-font-weight-medium;
+      text-decoration: none;
+
+      &:hover { text-decoration: underline; }
+    }
+  }
+
+  &__forgot {
+    text-align: right;
+    font-size: $cm-font-size-sm;
+
+    a {
+      color: $brand-primary;
+      text-decoration: none;
+
+      &:hover { text-decoration: underline; }
+    }
+  }
+}
+
+// Password strength indicator
+.password-strength {
+  margin-top: 6px;
+
+  &__bars {
+    @include cm-flex-start;
+    gap: 4px;
+    margin-bottom: 4px;
+  }
+
+  &__bar {
+    height: 3px;
+    flex: 1;
+    border-radius: 2px;
+    background-color: $cm-neutral-200;
+    transition: background-color 300ms;
+
+    &--filled-weak { background-color: $cm-color-danger; }
+    &--filled-fair { background-color: $cm-color-warning; }
+    &--filled-good { background-color: $cm-color-info; }
+    &--filled-strong { background-color: $cm-color-success; }
+  }
+
+  &__label {
+    font-size: $cm-font-size-xs;
+    color: $cm-neutral-500;
+  }
+}

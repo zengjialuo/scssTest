@@ -1,0 +1,113 @@
+// Tooltip component
+@use 'common-mixin/mixins/position' as *;
+@use 'common-mixin/mixins/animation' as *;
+@use 'common-mixin/variables/typography' as *;
+@use 'scss/variables/component-vars' as *;
+
+.tooltip-wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+.tooltip {
+  @include cm-absolute-center-x;
+  bottom: calc(100% + 8px);
+  z-index: 700;
+  background-color: $tooltip-bg;
+  color: $tooltip-color;
+  font-size: $tooltip-font-size;
+  max-width: $tooltip-max-width;
+  padding: $tooltip-padding;
+  border-radius: $tooltip-border-radius;
+  white-space: normal;
+  word-wrap: break-word;
+  pointer-events: none;
+  @include cm-fade-in(150ms);
+  line-height: 1.4;
+
+  // Arrow
+  &::after {
+    content: '';
+    @include cm-absolute(null, null, -$tooltip-arrow-size + 1, 50%);
+    transform: translateX(-50%);
+    border-width: $tooltip-arrow-size $tooltip-arrow-size 0;
+    border-style: solid;
+    border-color: $tooltip-bg transparent transparent;
+  }
+
+  // Placement variants
+  &--bottom {
+    top: calc(100% + 8px);
+    bottom: auto;
+
+    &::after {
+      top: -$tooltip-arrow-size + 1;
+      bottom: auto;
+      border-width: 0 $tooltip-arrow-size $tooltip-arrow-size;
+      border-color: transparent transparent $tooltip-bg;
+    }
+  }
+
+  &--left {
+    @include cm-absolute(50%, null, null, null);
+    right: calc(100% + 8px);
+    left: auto;
+    transform: translateY(-50%);
+
+    &::after {
+      top: 50%;
+      right: -$tooltip-arrow-size + 1;
+      left: auto;
+      transform: translateY(-50%);
+      border-width: $tooltip-arrow-size 0 $tooltip-arrow-size $tooltip-arrow-size;
+      border-color: transparent transparent transparent $tooltip-bg;
+    }
+  }
+
+  &--right {
+    @include cm-absolute(50%, null, null, calc(100% + 8px));
+    transform: translateY(-50%);
+
+    &::after {
+      top: 50%;
+      left: -$tooltip-arrow-size + 1;
+      transform: translateY(-50%);
+      border-width: $tooltip-arrow-size $tooltip-arrow-size $tooltip-arrow-size 0;
+      border-color: transparent $tooltip-bg transparent transparent;
+    }
+  }
+}
+
+// Popover (richer tooltip)
+.popover {
+  @include cm-absolute($top: calc(100% + 8px));
+  z-index: 600;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+  min-width: 200px;
+  max-width: 350px;
+  @include cm-scale-in(150ms);
+
+  &__header {
+    padding: 12px 16px;
+    border-bottom: 1px solid #e5e7eb;
+    font-weight: 600;
+    font-size: $cm-font-size-sm;
+  }
+
+  &__body {
+    padding: 12px 16px;
+    font-size: $cm-font-size-sm;
+    color: #4b5563;
+  }
+
+  &__footer {
+    padding: 8px 16px;
+    border-top: 1px solid #e5e7eb;
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+  }
+}

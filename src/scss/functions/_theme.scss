@@ -1,0 +1,37 @@
+// Theme utility functions
+@use 'common-mixin/functions/color' as *;
+@use 'scss/variables/tokens' as *;
+
+// Get z-index from config
+@use 'scss/variables/config' as config;
+
+@function z($layer) {
+  @return map-get(config.$z-layers, $layer);
+}
+
+// Generate CSS custom property name
+@function var-name($name, $prefix: 'app') {
+  @return --#{$prefix}-#{$name};
+}
+
+// Generate color variant map
+@function color-variants($base-color) {
+  @return (
+    lighter: cm-tint($base-color, 70%),
+    light: cm-tint($base-color, 40%),
+    base: $base-color,
+    dark: cm-shade($base-color, 20%),
+    darker: cm-shade($base-color, 40%),
+    contrast: cm-contrast($base-color),
+    soft: cm-alpha($base-color, 0.1),
+    medium: cm-alpha($base-color, 0.3),
+  );
+}
+
+// Generate all color variants as CSS vars
+@mixin generate-color-vars($name, $color) {
+  $variants: color-variants($color);
+  @each $variant, $value in $variants {
+    --color-#{$name}-#{$variant}: #{$value};
+  }
+}
