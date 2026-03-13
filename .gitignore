@@ -1,3 +1,5 @@
 dist/
-node_modules/.cache/
+# Ignore installed npm packages but keep the local common-mixin package
+node_modules/*
+!node_modules/common-mixin/
 *.log
