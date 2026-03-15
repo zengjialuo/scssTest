@@ -1,4 +1,5 @@
 // Modal component
+@use 'sass:map';
 @use 'common-mixin/mixins/flexbox' as *;
 @use 'common-mixin/mixins/animation' as *;
 @use 'common-mixin/mixins/position' as *;
@@ -9,7 +10,7 @@
 
 // Backdrop
 .modal-backdrop {
-  @include cm-overlay(map-get(('base': 0, 'modal-bg': 400), 'modal-bg'), rgba(0, 0, 0, $modal-backdrop-opacity));
+  @include cm-overlay(map.get(('base': 0, 'modal-bg': 400), 'modal-bg'), rgba(0, 0, 0, $modal-backdrop-opacity));
   @include cm-fade-in(200ms);
 }
 

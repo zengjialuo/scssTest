@@ -1,5 +1,6 @@
 // Color utility functions
 @use 'sass:map';
+@use 'sass:color';
 
 // Get color with alpha
 @function cm-alpha($color, $opacity) {
@@ -8,17 +9,17 @@
 
 // Tint (mix with white)
 @function cm-tint($color, $percentage) {
-  @return mix(white, $color, $percentage);
+  @return color.mix(white, $color, $percentage);
 }
 
 // Shade (mix with black)
 @function cm-shade($color, $percentage) {
-  @return mix(black, $color, $percentage);
+  @return color.mix(black, $color, $percentage);
 }
 
 // Tone (mix with gray)
 @function cm-tone($color, $percentage) {
-  @return mix(#808080, $color, $percentage);
+  @return color.mix(#808080, $color, $percentage);
 }
 
 // Get contrast color (black or white)
@@ -59,5 +60,5 @@
 
 // Interpolate between two colors
 @function cm-color-mix($color1, $color2, $weight: 50%) {
-  @return mix($color1, $color2, $weight);
+  @return color.mix($color1, $color2, $weight);
 }
