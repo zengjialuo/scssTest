@@ -1,0 +1,342 @@
+// ============================================================
+// LEGACY UTILITIES — massive generated output
+// Uses @for loops with large ranges, old sass math (unitless /),
+// and deprecated global functions.
+// This file is the primary compile-time cost driver:
+// imported via @import in every page, so it re-compiles each time.
+// ============================================================
+@import 'vars';
+
+// ---- Spacing utilities: m-{0..120} / p-{0..120} ----
+// Technical debt: responsive variants generated per breakpoint without deduplication.
+// 120 steps × 14 props × 5 breakpoints = 8,400 extra rules on top of the base 1,680.
+$legacy-breakpoints: ('sm': 576px, 'md': 768px, 'lg': 992px, 'xl': 1200px, 'xxl': 1400px);
+
+@for $i from 0 through 120 {
+  $val: #{$i * 4}px;
+  .m-#{$i}   { margin:         $val !important }
+  .mt-#{$i}  { margin-top:     $val !important }
+  .mr-#{$i}  { margin-right:   $val !important }
+  .mb-#{$i}  { margin-bottom:  $val !important }
+  .ml-#{$i}  { margin-left:    $val !important }
+  .mx-#{$i}  { margin-left:    $val !important; margin-right:  $val !important }
+  .my-#{$i}  { margin-top:     $val !important; margin-bottom: $val !important }
+  .p-#{$i}   { padding:        $val !important }
+  .pt-#{$i}  { padding-top:    $val !important }
+  .pr-#{$i}  { padding-right:  $val !important }
+  .pb-#{$i}  { padding-bottom: $val !important }
+  .pl-#{$i}  { padding-left:   $val !important }
+  .px-#{$i}  { padding-left:   $val !important; padding-right:  $val !important }
+  .py-#{$i}  { padding-top:    $val !important; padding-bottom: $val !important }
+}
+
+// Responsive spacing — legacy pattern: repeat all rules per breakpoint
+@each $bp, $width in $legacy-breakpoints {
+  @media (min-width: $width) {
+    @for $i from 0 through 120 {
+      $val: #{$i * 4}px;
+      .#{$bp}-m-#{$i}   { margin:         $val !important }
+      .#{$bp}-mt-#{$i}  { margin-top:     $val !important }
+      .#{$bp}-mr-#{$i}  { margin-right:   $val !important }
+      .#{$bp}-mb-#{$i}  { margin-bottom:  $val !important }
+      .#{$bp}-ml-#{$i}  { margin-left:    $val !important }
+      .#{$bp}-mx-#{$i}  { margin-left:    $val !important; margin-right:  $val !important }
+      .#{$bp}-my-#{$i}  { margin-top:     $val !important; margin-bottom: $val !important }
+      .#{$bp}-p-#{$i}   { padding:        $val !important }
+      .#{$bp}-pt-#{$i}  { padding-top:    $val !important }
+      .#{$bp}-pr-#{$i}  { padding-right:  $val !important }
+      .#{$bp}-pb-#{$i}  { padding-bottom: $val !important }
+      .#{$bp}-pl-#{$i}  { padding-left:   $val !important }
+      .#{$bp}-px-#{$i}  { padding-left:   $val !important; padding-right:  $val !important }
+      .#{$bp}-py-#{$i}  { padding-top:    $val !important; padding-bottom: $val !important }
+    }
+  }
+}
+
+// ---- Width / Height utilities: w-{0..100} h-{0..100} (%) + responsive ----
+@for $i from 0 through 100 {
+  $pct: $i * 1%;
+  .w-#{$i}     { width:      $pct !important }
+  .h-#{$i}     { height:     $pct !important }
+  .min-w-#{$i} { min-width:  $pct !important }
+  .max-w-#{$i} { max-width:  $pct !important }
+  .min-h-#{$i} { min-height: $pct !important }
+  .max-h-#{$i} { max-height: $pct !important }
+}
+
+@each $bp, $width in $legacy-breakpoints {
+  @media (min-width: $width) {
+    @for $i from 0 through 100 {
+      $pct: $i * 1%;
+      .#{$bp}-w-#{$i}     { width:      $pct !important }
+      .#{$bp}-h-#{$i}     { height:     $pct !important }
+      .#{$bp}-min-w-#{$i} { min-width:  $pct !important }
+      .#{$bp}-max-w-#{$i} { max-width:  $pct !important }
+    }
+  }
+}
+
+// ---- Font size utilities: fs-{8..96}px + responsive ----
+@for $i from 8 through 96 {
+  .fs-#{$i} { font-size: #{$i}px !important }
+}
+@each $bp, $width in $legacy-breakpoints {
+  @media (min-width: $width) {
+    @for $i from 8 through 96 {
+      .#{$bp}-fs-#{$i} { font-size: #{$i}px !important }
+    }
+  }
+}
+
+// ---- Gap utilities: gap-{0..80} + responsive ----
+@for $i from 0 through 80 {
+  $val: #{$i * 4}px;
+  .gap-#{$i}   { gap:        $val !important }
+  .gap-x-#{$i} { column-gap: $val !important }
+  .gap-y-#{$i} { row-gap:    $val !important }
+}
+@each $bp, $width in $legacy-breakpoints {
+  @media (min-width: $width) {
+    @for $i from 0 through 80 {
+      $val: #{$i * 4}px;
+      .#{$bp}-gap-#{$i}   { gap:        $val !important }
+      .#{$bp}-gap-x-#{$i} { column-gap: $val !important }
+      .#{$bp}-gap-y-#{$i} { row-gap:    $val !important }
+    }
+  }
+}
+
+// ---- Border-radius: rounded-{0..64} + responsive ----
+@for $i from 0 through 64 {
+  .rounded-#{$i} { border-radius: #{$i}px !important }
+  .rounded-t-#{$i} { border-top-left-radius: #{$i}px !important; border-top-right-radius: #{$i}px !important }
+  .rounded-b-#{$i} { border-bottom-left-radius: #{$i}px !important; border-bottom-right-radius: #{$i}px !important }
+  .rounded-l-#{$i} { border-top-left-radius: #{$i}px !important; border-bottom-left-radius: #{$i}px !important }
+  .rounded-r-#{$i} { border-top-right-radius: #{$i}px !important; border-bottom-right-radius: #{$i}px !important }
+}
+@each $bp, $width in $legacy-breakpoints {
+  @media (min-width: $width) {
+    @for $i from 0 through 64 {
+      .#{$bp}-rounded-#{$i} { border-radius: #{$i}px !important }
+    }
+  }
+}
+
+// ---- Grid columns: grid-cols-{1..24} + responsive ----
+@for $i from 1 through 24 {
+  .grid-cols-#{$i} { display: grid; grid-template-columns: repeat($i, minmax(0, 1fr)) !important }
+  .col-span-#{$i}  { grid-column: span $i / span $i !important }
+  .col-start-#{$i} { grid-column-start: $i !important }
+  .row-span-#{$i}  { grid-row: span $i / span $i !important }
+}
+@each $bp, $width in $legacy-breakpoints {
+  @media (min-width: $width) {
+    @for $i from 1 through 24 {
+      .#{$bp}-grid-cols-#{$i} { display: grid; grid-template-columns: repeat($i, minmax(0, 1fr)) !important }
+      .#{$bp}-col-span-#{$i}  { grid-column: span $i / span $i !important }
+    }
+  }
+}
+
+// ---- Display + Flex responsive variants ----
+$display-values: (block, inline-block, inline, flex, inline-flex, grid, inline-grid, contents, none);
+@each $d in $display-values {
+  .d-#{$d} { display: $d !important }
+  @each $bp, $width in $legacy-breakpoints {
+    @media (min-width: $width) {
+      .#{$bp}-d-#{$d} { display: $d !important }
+    }
+  }
+}
+
+$flex-directions: (row, row-reverse, column, column-reverse);
+@each $d in $flex-directions {
+  .flex-#{$d} { flex-direction: $d !important }
+  @each $bp, $width in $legacy-breakpoints {
+    @media (min-width: $width) {
+      .#{$bp}-flex-#{$d} { flex-direction: $d !important }
+    }
+  }
+}
+
+$justify-values: (start, end, center, between, around, evenly);
+$justify-map: (start: flex-start, end: flex-end, center: center, between: space-between, around: space-around, evenly: space-evenly);
+@each $key, $val in $justify-map {
+  .justify-#{$key} { justify-content: $val !important }
+  @each $bp, $width in $legacy-breakpoints {
+    @media (min-width: $width) {
+      .#{$bp}-justify-#{$key} { justify-content: $val !important }
+    }
+  }
+}
+
+$align-map: (start: flex-start, end: flex-end, center: center, baseline: baseline, stretch: stretch);
+@each $key, $val in $align-map {
+  .items-#{$key} { align-items: $val !important }
+  @each $bp, $width in $legacy-breakpoints {
+    @media (min-width: $width) {
+      .#{$bp}-items-#{$key} { align-items: $val !important }
+    }
+  }
+}
+
+// ---- Text-align responsive ----
+@each $align in (left, center, right, justify) {
+  .text-#{$align} { text-align: $align !important }
+  @each $bp, $width in $legacy-breakpoints {
+    @media (min-width: $width) {
+      .#{$bp}-text-#{$align} { text-align: $align !important }
+    }
+  }
+}
+
+// ---- Font weight ----
+@each $w in 100, 200, 300, 400, 500, 600, 700, 800, 900 {
+  .fw-#{$w} { font-weight: $w !important }
+}
+
+// ---- Line-height utilities: lh-{10..30} (×0.1) ----
+@for $i from 10 through 30 {
+  .lh-#{$i} { line-height: #{$i * 0.1} !important }
+}
+
+// ---- Letter-spacing: ls-{0..10} (×0.01em) ----
+@for $i from 0 through 10 {
+  .ls-#{$i} { letter-spacing: #{$i * 0.01}em !important }
+}
+
+// ---- Opacity utilities: op-{0..100 step 5} ----
+@for $i from 0 through 20 {
+  .op-#{$i * 5} { opacity: #{$i * 0.05} !important }
+}
+
+// ---- Z-index: z-{0..50} ----
+@for $i from 0 through 50 {
+  .z-#{$i} { z-index: $i !important }
+}
+
+// ---- Border-radius: rounded-{0..32} ----
+@for $i from 0 through 32 {
+  .rounded-#{$i} { border-radius: #{$i}px !important }
+}
+
+// ---- Gap: gap-{0..32} ----
+@for $i from 0 through 32 {
+  $val: #{$i * 4}px;
+  .gap-#{$i}   { gap:        $val !important }
+  .gap-x-#{$i} { column-gap: $val !important }
+  .gap-y-#{$i} { row-gap:    $val !important }
+}
+
+// ---- Grid: grid-cols-{1..24} ----
+@for $i from 1 through 24 {
+  .grid-cols-#{$i} { display: grid; grid-template-columns: repeat($i, minmax(0, 1fr)) !important }
+  .col-span-#{$i}  { grid-column: span $i / span $i !important }
+  .col-start-#{$i} { grid-column-start: $i !important }
+}
+
+// ---- Flex order: order-{1..12} ----
+@for $i from 1 through 12 {
+  .order-#{$i} { order: $i !important }
+}
+
+// ---- Color utilities using deprecated functions ----
+$legacy-colors: (
+  'primary':   $brand-primary,
+  'secondary': $brand-secondary,
+  'accent':    $brand-accent,
+  'success':   $brand-success,
+  'warning':   $brand-warning,
+  'danger':    $brand-danger,
+  'info':      $brand-info,
+  'neutral':   $brand-neutral,
+);
+
+@each $name, $color in $legacy-colors {
+  .text-#{$name}          { color: $color !important }
+  .text-#{$name}-light    { color: lighten($color, 15%) !important }
+  .text-#{$name}-dark     { color: darken($color, 15%) !important }
+  .bg-#{$name}            { background-color: $color !important }
+  .bg-#{$name}-light      { background-color: lighten($color, 30%) !important }
+  .bg-#{$name}-dark       { background-color: darken($color, 15%) !important }
+  .bg-#{$name}-subtle     { background-color: lighten($color, 42%) !important }
+  .border-#{$name}        { border-color: $color !important }
+  .border-#{$name}-light  { border-color: lighten($color, 20%) !important }
+  .ring-#{$name}          { box-shadow: 0 0 0 3px rgba($color, .35) !important }
+  .shadow-#{$name}        { box-shadow: 0 4px 14px rgba($color, .35) !important }
+  .fill-#{$name}          { fill: $color !important }
+  .stroke-#{$name}        { stroke: $color !important }
+}
+
+// Gray scale utilities
+@each $shade, $color in (
+  '50':  $gray-50,  '100': $gray-100, '200': $gray-200, '300': $gray-300,
+  '400': $gray-400, '500': $gray-500, '600': $gray-600, '700': $gray-700,
+  '800': $gray-800, '900': $gray-900
+) {
+  .text-gray-#{$shade} { color: $color !important }
+  .bg-gray-#{$shade}   { background-color: $color !important }
+  .border-gray-#{$shade} { border-color: $color !important }
+}
+
+// ---- Animation utility classes ----
+// Maps every keyframe from _animations.scss to a class
+$anim-duration-base: 300ms;
+@each $name in (
+  fadeIn, fadeOut, fadeInUp, fadeInDown, fadeInLeft, fadeInRight,
+  fadeOutUp, fadeOutDown, fadeOutLeft, fadeOutRight,
+  slideInTop, slideInBottom, slideInLeft, slideInRight,
+  slideOutTop, slideOutBottom, slideOutLeft, slideOutRight,
+  zoomIn, zoomOut, zoomInUp, zoomInDown,
+  scalePulse, scaleBreath, popIn, popOut,
+  spin, spinReverse, spinSlow, wobble, swing,
+  shake, shakeVertical, jello, heartbeat, rubberBand, tada, bounce, bounceIn,
+  flipX, flipY, flipOutX,
+  colorShift, gradientFlow, shimmer, glowPulse, textColorCycle, borderGlow,
+  dotFlashing, dotElastic, barStretch, ringSpinner, progressBar,
+  progressIndeterminate, skeletonWave,
+  float, floatShadow, tilt, morphBlob, typewriter, blinkCursor,
+  countUp, rollIn, rollOut, hinge, jackInTheBox
+) {
+  .anim-#{$name} { animation: $name $anim-duration-base ease both }
+}
+
+// Duration modifiers
+@each $suffix, $dur in ('75': 75ms, '100': 100ms, '150': 150ms, '200': 200ms,
+  '300': 300ms, '500': 500ms, '700': 700ms, '1000': 1000ms,
+  '1500': 1500ms, '2000': 2000ms, '3000': 3000ms) {
+  .duration-#{$suffix} { animation-duration: $dur !important }
+}
+
+// Delay modifiers
+@each $suffix, $delay in ('75': 75ms, '100': 100ms, '150': 150ms, '200': 200ms,
+  '300': 300ms, '500': 500ms, '700': 700ms, '1000': 1000ms,
+  '1500': 1500ms, '2000': 2000ms) {
+  .delay-#{$suffix} { animation-delay: $delay !important }
+}
+
+// ---- Display / Visibility ----
+.d-none    { display: none !important }
+.d-block   { display: block !important }
+.d-inline  { display: inline !important }
+.d-inline-block { display: inline-block !important }
+.d-flex    { display: flex !important }
+.d-grid    { display: grid !important }
+.d-contents { display: contents !important }
+.invisible { visibility: hidden !important }
+.visible   { visibility: visible !important }
+.sr-only   { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0 }
+
+// ---- Overflow ----
+.overflow-hidden { overflow: hidden !important }
+.overflow-auto   { overflow: auto !important }
+.overflow-scroll { overflow: scroll !important }
+.overflow-x-auto { overflow-x: auto !important }
+.overflow-y-auto { overflow-y: auto !important }
+
+// ---- Position ----
+.pos-static   { position: static !important }
+.pos-relative { position: relative !important }
+.pos-absolute { position: absolute !important }
+.pos-fixed    { position: fixed !important }
+.pos-sticky   { position: sticky !important }

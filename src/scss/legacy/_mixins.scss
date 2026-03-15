@@ -1,0 +1,180 @@
+// ============================================================
+// LEGACY MIXINS — deprecated patterns
+// Uses: @content without semicolons, old argument syntax,
+//       vendor prefix mixins that are no longer needed,
+//       non-namespaced globals typical of pre-@use codebases.
+// ============================================================
+@import 'vars';
+
+// --- Responsive ---
+@mixin respond-to($bp) {
+  @if      $bp == 'xs'  { @media (max-width: #{$bp-xs})  { @content } }
+  @else if $bp == 'sm'  { @media (max-width: #{$bp-sm})  { @content } }
+  @else if $bp == 'md'  { @media (max-width: #{$bp-md})  { @content } }
+  @else if $bp == 'lg'  { @media (max-width: #{$bp-lg})  { @content } }
+  @else if $bp == 'xl'  { @media (max-width: #{$bp-xl})  { @content } }
+  @else if $bp == '2xl' { @media (max-width: #{$bp-2xl}) { @content } }
+  @else { @warn "Unknown breakpoint: #{$bp}" }
+}
+@mixin respond-above($bp) {
+  @if      $bp == 'sm'  { @media (min-width: #{$bp-sm})  { @content } }
+  @else if $bp == 'md'  { @media (min-width: #{$bp-md})  { @content } }
+  @else if $bp == 'lg'  { @media (min-width: #{$bp-lg})  { @content } }
+  @else if $bp == 'xl'  { @media (min-width: #{$bp-xl})  { @content } }
+  @else if $bp == '2xl' { @media (min-width: #{$bp-2xl}) { @content } }
+}
+
+// --- Flexbox helpers (legacy vendor-prefix era) ---
+@mixin flex-center {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+@mixin flex-between {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+@mixin flex-column {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+// --- Transition (legacy: manually specify all prefixes) ---
+@mixin transition($args...) {
+  -webkit-transition: $args;
+     -moz-transition: $args;
+       -o-transition: $args;
+          transition: $args;
+}
+@mixin transform($args...) {
+  -webkit-transform: $args;
+     -moz-transform: $args;
+      -ms-transform: $args;
+       -o-transform: $args;
+          transform: $args;
+}
+@mixin animation($args...) {
+  -webkit-animation: $args;
+          animation: $args;
+}
+
+// --- Typography ---
+@mixin text-truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap }
+@mixin text-clamp($lines: 2) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $lines;
+  overflow: hidden;
+}
+@mixin heading($size, $weight: $font-weight-bold) {
+  font-family: $font-family-heading;
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $line-height-tight;
+  letter-spacing: -.02em;
+  color: darken($gray-900, 5%);
+}
+
+// --- Button base (deprecated pattern: no BEM, flat selectors) ---
+@mixin btn-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-2;
+  padding: $space-6 $space-12;
+  border: $border-width-base $border-style-base transparent;
+  border-radius: $border-radius-base;
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  line-height: 1;
+  cursor: pointer;
+  text-decoration: none;
+  @include transition(all $transition-base);
+  &:disabled { opacity: .5; cursor: not-allowed; pointer-events: none }
+}
+@mixin btn-variant($bg, $color: white) {
+  background-color: $bg;
+  color: $color;
+  border-color: $bg;
+  &:hover  { background-color: darken($bg, 8%);  border-color: darken($bg, 8%) }
+  &:active { background-color: darken($bg, 14%); border-color: darken($bg, 14%) }
+  &:focus  { outline: none; box-shadow: 0 0 0 3px rgba($bg, .35) }
+}
+
+// --- Card ---
+@mixin card($padding: $space-16, $radius: $border-radius-md) {
+  background: white;
+  border-radius: $radius;
+  padding: $padding;
+  box-shadow: $shadow-md;
+  border: $border-width-thin $border-style-base $border-color-base;
+}
+
+// --- Form ---
+@mixin input-base {
+  display: block;
+  width: 100%;
+  padding: $space-6 $space-8;
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  line-height: $line-height-normal;
+  color: $gray-800;
+  background: white;
+  border: $border-width-thin $border-style-base $border-color-base;
+  border-radius: $border-radius-base;
+  @include transition(border-color $transition-fast, box-shadow $transition-fast);
+  &:focus { outline: none; border-color: $brand-primary; box-shadow: 0 0 0 3px rgba($brand-primary, .2) }
+  &::placeholder { color: $gray-400 }
+  &:disabled { background: $gray-100; cursor: not-allowed }
+}
+
+// --- Position helpers ---
+@mixin absolute-fill { position: absolute; inset: 0 }
+@mixin fixed-fill    { position: fixed; inset: 0 }
+@mixin absolute-center {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+}
+@mixin overlay($color: rgba(0,0,0,.5)) {
+  @include absolute-fill;
+  background: $color;
+}
+
+// --- Scrollbar ---
+@mixin scrollbar-thin($track: $gray-100, $thumb: $gray-300) {
+  scrollbar-width: thin;
+  scrollbar-color: $thumb $track;
+  &::-webkit-scrollbar { width: 6px; height: 6px }
+  &::-webkit-scrollbar-track { background: $track }
+  &::-webkit-scrollbar-thumb { background: $thumb; border-radius: 3px;
+    &:hover { background: darken($thumb, 10%) }
+  }
+}
+
+// --- Animation helpers ---
+@mixin animate($name, $duration: 300ms, $easing: ease, $fill: both, $delay: 0s) {
+  @include animation($name $duration $easing $delay $fill);
+}
+@mixin animate-infinite($name, $duration: 1s, $easing: ease-in-out) {
+  @include animation($name $duration $easing infinite);
+}

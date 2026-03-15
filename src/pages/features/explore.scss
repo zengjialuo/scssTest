@@ -1,0 +1,70 @@
+// Legacy page — @import-based technical debt
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+.explore-page {
+  min-height: 100vh; background: $gray-50; font-family: $font-family-base;
+
+  &__header {
+    background: linear-gradient(135deg, $brand-primary 0%, darken($brand-primary, 15%) 100%);
+    padding: $space-40 $space-24; color: white;
+    -webkit-animation: fadeInDown 600ms ease both; animation: fadeInDown 600ms ease both;
+    h1 { @include heading($font-size-4xl); color: white; margin-bottom: $space-12 }
+    p  { opacity: .85; font-size: $font-size-lg;
+         -webkit-animation: fadeIn 600ms ease 200ms both; animation: fadeIn 600ms ease 200ms both }
+  }
+
+  &__content {
+    max-width: 1200px; margin: 0 auto; padding: $space-40 $space-24;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: $space-24;
+    @include respond-to('md') { grid-template-columns: 1fr }
+  }
+
+  &__card {
+    @include card;
+    @include transition(transform $transition-slow, box-shadow $transition-slow);
+    -webkit-animation: fadeInUp 400ms ease both; animation: fadeInUp 400ms ease both;
+    @for $i from 1 through 9 { &:nth-child(#{$i}) { animation-delay: #{$i*80}ms } }
+    &:hover { @include transform(translateY(-4px)); box-shadow: $shadow-xl }
+    &-title { @include heading($font-size-xl); margin-bottom: $space-8 }
+    &-body { color: $gray-600; line-height: $line-height-relaxed }
+    &-footer { margin-top: $space-16; padding-top: $space-12; border-top: 1px solid $border-color-base; @include flex-between }
+  }
+
+  &__stats {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: $space-16;
+    padding: $space-32 $space-24; background: white; border-bottom: 1px solid $border-color-base;
+    @include respond-to('md') { grid-template-columns: repeat(2, 1fr) }
+  }
+  &__stat {
+    text-align: center;
+    -webkit-animation: countUp 600ms ease both; animation: countUp 600ms ease both;
+    @for $i from 1 through 4 { &:nth-child(#{$i}) { animation-delay: #{$i*100}ms } }
+    &-value { font-size: $font-size-4xl; font-weight: $font-weight-black; color: $brand-primary; display: block }
+    &-label { font-size: $font-size-sm; color: $gray-500; text-transform: uppercase; letter-spacing: .08em }
+  }
+
+  &__list {
+    display: flex; flex-direction: column; gap: $space-12;
+    &-item {
+      @include card($space-12);
+      @include flex-between; gap: $space-12;
+      -webkit-animation: slideInLeft 300ms ease both; animation: slideInLeft 300ms ease both;
+      @for $i from 1 through 15 { &:nth-child(#{$i}) { animation-delay: #{$i*40}ms } }
+      &:hover { background: $gray-50 }
+    }
+  }
+
+  &__fab {
+    position: fixed; bottom: $space-24; right: $space-24;
+    width: 56px; height: 56px; border-radius: 50%;
+    background: $brand-primary; color: white; border: none; cursor: pointer;
+    @include flex-center; box-shadow: $shadow-lg;
+    @include transition(transform $transition-base, box-shadow $transition-base);
+    @include animate-infinite(glowPulse, 2s);
+    &:hover { @include transform(scale(1.1)) }
+  }
+}

@@ -1,0 +1,179 @@
+// ============================================================
+// LEGACY VARIABLES — technical debt showcase
+// Uses deprecated @import-era global variable pattern.
+// Color derivations use deprecated color functions (lighten/darken/mix/adjust-hue).
+// ============================================================
+
+// Brand palette
+$brand-primary:   #1a73e8;
+$brand-secondary: #e91e63;
+$brand-accent:    #ff6d00;
+$brand-success:   #2e7d32;
+$brand-warning:   #f57f17;
+$brand-danger:    #c62828;
+$brand-info:      #0277bd;
+$brand-neutral:   #546e7a;
+
+// Deprecated: direct lighten/darken calls (triggers sass warnings)
+$color-primary-50:  lighten($brand-primary, 45%);
+$color-primary-100: lighten($brand-primary, 38%);
+$color-primary-200: lighten($brand-primary, 28%);
+$color-primary-300: lighten($brand-primary, 18%);
+$color-primary-400: lighten($brand-primary, 8%);
+$color-primary-500: $brand-primary;
+$color-primary-600: darken($brand-primary, 8%);
+$color-primary-700: darken($brand-primary, 18%);
+$color-primary-800: darken($brand-primary, 28%);
+$color-primary-900: darken($brand-primary, 38%);
+
+$color-secondary-50:  lighten($brand-secondary, 45%);
+$color-secondary-100: lighten($brand-secondary, 38%);
+$color-secondary-200: lighten($brand-secondary, 28%);
+$color-secondary-300: lighten($brand-secondary, 18%);
+$color-secondary-400: lighten($brand-secondary, 8%);
+$color-secondary-500: $brand-secondary;
+$color-secondary-600: darken($brand-secondary, 8%);
+$color-secondary-700: darken($brand-secondary, 18%);
+$color-secondary-800: darken($brand-secondary, 28%);
+$color-secondary-900: darken($brand-secondary, 38%);
+
+$color-danger-100: lighten($brand-danger, 38%);
+$color-danger-300: lighten($brand-danger, 18%);
+$color-danger-500: $brand-danger;
+$color-danger-700: darken($brand-danger, 18%);
+
+$color-success-100: lighten($brand-success, 38%);
+$color-success-300: lighten($brand-success, 18%);
+$color-success-500: $brand-success;
+$color-success-700: darken($brand-success, 18%);
+
+$color-warning-100: lighten($brand-warning, 38%);
+$color-warning-300: lighten($brand-warning, 18%);
+$color-warning-500: $brand-warning;
+$color-warning-700: darken($brand-warning, 18%);
+
+// Neutrals — mix() deprecated call pattern
+$gray-50:  mix(white, black, 97%);
+$gray-100: mix(white, black, 93%);
+$gray-200: mix(white, black, 86%);
+$gray-300: mix(white, black, 76%);
+$gray-400: mix(white, black, 60%);
+$gray-500: mix(white, black, 46%);
+$gray-600: mix(white, black, 32%);
+$gray-700: mix(white, black, 22%);
+$gray-800: mix(white, black, 12%);
+$gray-900: mix(white, black, 5%);
+
+// adjust-hue (deprecated)
+$color-analogous-a: adjust-hue($brand-primary, 30deg);
+$color-analogous-b: adjust-hue($brand-primary, -30deg);
+$color-triadic-a:   adjust-hue($brand-primary, 120deg);
+$color-triadic-b:   adjust-hue($brand-primary, -120deg);
+$color-complement:  adjust-hue($brand-primary, 180deg);
+
+// Typography
+$font-family-base:    'Inter', 'Helvetica Neue', Arial, sans-serif;
+$font-family-heading: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
+$font-family-mono:    'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+
+$font-size-xs:   10px;
+$font-size-sm:   12px;
+$font-size-base: 14px;
+$font-size-md:   16px;
+$font-size-lg:   18px;
+$font-size-xl:   20px;
+$font-size-2xl:  24px;
+$font-size-3xl:  30px;
+$font-size-4xl:  36px;
+$font-size-5xl:  48px;
+$font-size-6xl:  60px;
+
+$font-weight-thin:       100;
+$font-weight-light:      300;
+$font-weight-regular:    400;
+$font-weight-medium:     500;
+$font-weight-semibold:   600;
+$font-weight-bold:       700;
+$font-weight-extrabold:  800;
+$font-weight-black:      900;
+
+$line-height-tight:   1.1;
+$line-height-snug:    1.25;
+$line-height-normal:  1.5;
+$line-height-relaxed: 1.75;
+$line-height-loose:   2;
+
+// Spacing scale (px, legacy project doesn't use rem)
+$space-0:  0;
+$space-1:  2px;
+$space-2:  4px;
+$space-3:  6px;
+$space-4:  8px;
+$space-5:  10px;
+$space-6:  12px;
+$space-8:  16px;
+$space-10: 20px;
+$space-12: 24px;
+$space-14: 28px;
+$space-16: 32px;
+$space-20: 40px;
+$space-24: 48px;
+$space-28: 56px;
+$space-32: 64px;
+$space-40: 80px;
+$space-48: 96px;
+$space-56: 112px;
+$space-64: 128px;
+
+// Z-index ladder
+$z-base:      0;
+$z-raised:    10;
+$z-dropdown:  100;
+$z-sticky:    200;
+$z-overlay:   300;
+$z-modal:     400;
+$z-popover:   500;
+$z-toast:     600;
+$z-tooltip:   700;
+$z-topmost:   9999;
+
+// Breakpoints
+$bp-xs:  320px;
+$bp-sm:  576px;
+$bp-md:  768px;
+$bp-lg:  992px;
+$bp-xl:  1200px;
+$bp-2xl: 1400px;
+$bp-3xl: 1600px;
+
+// Border
+$border-width-thin:   1px;
+$border-width-base:   2px;
+$border-width-thick:  4px;
+$border-style-base:   solid;
+$border-color-base:   $gray-200;
+$border-color-strong: $gray-400;
+$border-radius-sm:    2px;
+$border-radius-base:  4px;
+$border-radius-md:    8px;
+$border-radius-lg:    12px;
+$border-radius-xl:    16px;
+$border-radius-2xl:   24px;
+$border-radius-full:  9999px;
+
+// Shadows — deprecated darken() in shadow color
+$shadow-color-base: darken($gray-500, 10%);
+$shadow-xs:   0 1px 2px rgba($shadow-color-base, .05);
+$shadow-sm:   0 1px 3px rgba($shadow-color-base, .1), 0 1px 2px rgba($shadow-color-base, .06);
+$shadow-md:   0 4px 6px rgba($shadow-color-base, .07), 0 2px 4px rgba($shadow-color-base, .06);
+$shadow-lg:   0 10px 15px rgba($shadow-color-base, .1), 0 4px 6px rgba($shadow-color-base, .05);
+$shadow-xl:   0 20px 25px rgba($shadow-color-base, .1), 0 10px 10px rgba($shadow-color-base, .04);
+$shadow-2xl:  0 25px 50px rgba($shadow-color-base, .25);
+$shadow-inner: inset 0 2px 4px rgba($shadow-color-base, .06);
+$shadow-none: none;
+
+// Transitions
+$transition-fast:   150ms ease;
+$transition-base:   200ms ease;
+$transition-slow:   300ms ease;
+$transition-slower: 500ms ease;

@@ -25,17 +25,25 @@ const aliasImporter = {
   },
 };
 
-// Scan src/pages/ for all SCSS files
-const entries = fs.readdirSync(path.join(SRC, 'pages'))
-  .filter(f => f.endsWith('.scss'))
-  .map(f => {
-    const name = path.basename(f, '.scss');
-    return {
-      input: `src/pages/${f}`,
-      output: `dist/pages/${name}.js-api.css`,
-      label: `${name.charAt(0).toUpperCase() + name.slice(1)} page`,
-    };
-  });
+// Recursively scan src/pages/ for all SCSS files (including subdirectories)
+function scanScssFiles(dir, base) {
+  let results = [];
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const rel = path.join(base, entry.name);
+    if (entry.isDirectory()) {
+      results = results.concat(scanScssFiles(path.join(dir, entry.name), rel));
+    } else if (entry.name.endsWith('.scss')) {
+      const outRel = rel.replace(/\.scss$/, '.js-api.css');
+      results.push({
+        input:  path.join('src/pages', rel),
+        output: path.join('dist/pages', outRel),
+        label:  rel.replace(/\.scss$/, ''),
+      });
+    }
+  }
+  return results;
+}
+const entries = scanScssFiles(path.join(SRC, 'pages'), '');
 
 console.log('\n📊 SCSS Compilation (sass JS API)\n');
 console.log('='.repeat(60));

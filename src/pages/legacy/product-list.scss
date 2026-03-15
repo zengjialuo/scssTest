@@ -1,0 +1,211 @@
+// ============================================================
+// Product List Page — legacy technical debt page
+// Uses @import (deprecated), global selectors, vendor prefixes,
+// deprecated color functions, and heavy animation usage.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+// Page layout
+.product-list-page {
+  min-height: 100vh;
+  background: $gray-50;
+  font-family: $font-family-base;
+
+  // Hero / header area
+  &__hero {
+    background: linear-gradient(135deg, $brand-primary 0%, $color-analogous-a 100%);
+    background-size: 200% 200%;
+    -webkit-animation: gradientFlow 8s ease infinite;
+            animation: gradientFlow 8s ease infinite;
+    padding: $space-48 $space-24;
+    color: white;
+    text-align: center;
+
+    h1 {
+      @include heading($font-size-5xl);
+      color: white;
+      -webkit-animation: fadeInDown 600ms ease both;
+              animation: fadeInDown 600ms ease both;
+      margin-bottom: $space-16;
+    }
+    p {
+      font-size: $font-size-lg;
+      opacity: .9;
+      -webkit-animation: fadeInUp 600ms ease 200ms both;
+              animation: fadeInUp 600ms ease 200ms both;
+    }
+    .cta {
+      display: inline-flex; gap: $space-12; margin-top: $space-24;
+      -webkit-animation: fadeIn 600ms ease 400ms both;
+              animation: fadeIn 600ms ease 400ms both;
+    }
+  }
+
+  // Content grid
+  &__content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: $space-40 $space-24;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $space-24;
+
+    @include respond-to('md') {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  // Cards with staggered entrance
+  &__card {
+    @include card;
+    @include transition(transform $transition-slow, box-shadow $transition-slow);
+    -webkit-animation: fadeInUp 400ms ease both;
+            animation: fadeInUp 400ms ease both;
+
+    @for $i from 1 through 12 {
+      &:nth-child(#{$i}) { animation-delay: #{$i * 80}ms }
+    }
+
+    &:hover {
+      @include transform(translateY(-6px));
+      box-shadow: $shadow-xl;
+    }
+
+    &-title {
+      @include heading($font-size-xl);
+      margin-bottom: $space-8;
+    }
+    &-body { color: $gray-600; line-height: $line-height-relaxed }
+    &-footer {
+      margin-top: $space-16;
+      padding-top: $space-12;
+      border-top: 1px solid $border-color-base;
+      @include flex-between;
+    }
+  }
+
+  // Animated stat counters
+  &__stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: $space-16;
+    padding: $space-32 $space-24;
+    background: white;
+    border-bottom: 1px solid $border-color-base;
+
+    @include respond-to('md') { grid-template-columns: repeat(2, 1fr) }
+    @include respond-to('sm') { grid-template-columns: 1fr }
+  }
+  &__stat {
+    text-align: center;
+    -webkit-animation: countUp 600ms ease both;
+            animation: countUp 600ms ease both;
+
+    @for $i from 1 through 4 {
+      &:nth-child(#{$i}) { animation-delay: #{$i * 100}ms }
+    }
+
+    &-value {
+      font-size: $font-size-4xl;
+      font-weight: $font-weight-black;
+      color: $brand-primary;
+      display: block;
+    }
+    &-label { font-size: $font-size-sm; color: $gray-500; text-transform: uppercase; letter-spacing: .08em }
+  }
+
+  // Loading skeletons
+  &__skeleton {
+    padding: $space-24;
+    display: grid;
+    gap: $space-16;
+    &-row { display: flex; align-items: center; gap: $space-12 }
+  }
+
+  // Notification toast
+  &__toast {
+    position: fixed; bottom: $space-24; right: $space-24;
+    z-index: $z-toast;
+    display: flex; flex-direction: column; gap: $space-8;
+
+    &-item {
+      @include card($space-12);
+      min-width: 280px;
+      @include flex-between;
+      -webkit-animation: slideInRight 300ms ease both;
+              animation: slideInRight 300ms ease both;
+
+      &.is-success { border-left: 4px solid $brand-success }
+      &.is-error   { border-left: 4px solid $brand-danger  }
+      &.is-info    { border-left: 4px solid $brand-info    }
+      &.is-warning { border-left: 4px solid $brand-warning }
+    }
+  }
+
+  // Floating action button
+  &__fab {
+    position: fixed; bottom: $space-24; right: $space-24;
+    width: 56px; height: 56px; border-radius: 50%;
+    background: $brand-primary;
+    color: white; border: none; cursor: pointer;
+    @include flex-center;
+    box-shadow: $shadow-lg;
+    @include transition(transform $transition-base, box-shadow $transition-base);
+    @include animate-infinite(glowPulse, 2s);
+
+    &:hover {
+      @include transform(scale(1.1));
+      box-shadow: $shadow-2xl;
+    }
+    &:active { @include transform(scale(.95)) }
+  }
+
+  
+  &__filters {
+    position: sticky; top: 0; z-index: $z-sticky;
+    background: white; padding: $space-12 $space-24;
+    border-bottom: 1px solid $border-color-base;
+    @include flex-between;
+    box-shadow: $shadow-sm;
+    -webkit-animation: slideInTop 300ms ease both;
+            animation: slideInTop 300ms ease both;
+  }
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: $space-24;
+    padding: $space-24;
+  }
+  &__product-card {
+    @include card($space-0, $border-radius-md);
+    overflow: hidden;
+    @include transition(transform $transition-slow, box-shadow $transition-slow);
+    -webkit-animation: fadeIn 400ms ease both;
+            animation: fadeIn 400ms ease both;
+    @for $i from 1 through 20 { &:nth-child(#{$i}) { animation-delay: #{$i * 50}ms } }
+    &:hover { @include transform(translateY(-4px)); box-shadow: $shadow-xl }
+    &-image {
+      aspect-ratio: 1; background: $gray-100; overflow: hidden;
+      img { width: 100%; height: 100%; object-fit: cover; @include transition(transform $transition-slower) }
+      &:hover img { @include transform(scale(1.08)) }
+    }
+    &-body { padding: $space-12 }
+    &-price {
+      font-size: $font-size-lg; font-weight: $font-weight-bold; color: $brand-primary;
+      &-original { text-decoration: line-through; color: $gray-400; font-size: $font-size-sm; margin-left: $space-6 }
+    }
+    &-badge { position: absolute; top: $space-8; left: $space-8 }
+  }
+  &__pagination { @include flex-center; gap: $space-6; padding: $space-32 }
+  &__page-btn {
+    width: 36px; height: 36px; border-radius: $border-radius-base;
+    @include flex-center; cursor: pointer;
+    @include transition(background $transition-fast, color $transition-fast);
+    &.is-active { background: $brand-primary; color: white }
+    &:hover:not(.is-active) { background: $gray-100 }
+  }
+}

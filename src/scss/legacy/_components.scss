@@ -1,0 +1,184 @@
+// ============================================================
+// LEGACY COMPONENTS — flat global selectors, no BEM namespace,
+// deprecated @import chain, vendor prefixes everywhere.
+// ============================================================
+@import 'vars';
+@import 'mixins';
+@import 'animations';
+
+// ---- Buttons ----
+.btn { @include btn-base }
+.btn-primary   { @include btn-base; @include btn-variant($brand-primary) }
+.btn-secondary { @include btn-base; @include btn-variant($brand-secondary) }
+.btn-success   { @include btn-base; @include btn-variant($brand-success) }
+.btn-danger    { @include btn-base; @include btn-variant($brand-danger) }
+.btn-warning   { @include btn-base; @include btn-variant($brand-warning, $gray-900) }
+.btn-info      { @include btn-base; @include btn-variant($brand-info) }
+.btn-outline-primary {
+  @include btn-base;
+  background: transparent; color: $brand-primary; border-color: $brand-primary;
+  &:hover { background: $brand-primary; color: white }
+}
+.btn-ghost {
+  @include btn-base;
+  background: transparent; border-color: transparent; color: $gray-700;
+  &:hover { background: $gray-100 }
+}
+.btn-sm { padding: $space-3 $space-8;  font-size: $font-size-sm }
+.btn-lg { padding: $space-10 $space-20; font-size: $font-size-lg }
+.btn-xl { padding: $space-12 $space-24; font-size: $font-size-xl }
+.btn-block { display: flex; width: 100% }
+.btn-icon  { padding: $space-6; aspect-ratio: 1 }
+.btn-loading {
+  position: relative; pointer-events: none;
+  &::after {
+    content: ''; position: absolute; inset: 0; margin: auto;
+    width: 16px; height: 16px;
+    border: 2px solid transparent;
+    border-top-color: currentColor;
+    border-radius: 50%;
+    @include animate-infinite(spin, 600ms, linear);
+  }
+}
+
+// ---- Cards ----
+.card          { @include card }
+.card-sm       { @include card($space-10, $border-radius-base) }
+.card-lg       { @include card($space-24, $border-radius-lg) }
+.card-flat     { @include card; box-shadow: none }
+.card-raised   { @include card; box-shadow: $shadow-xl }
+.card-hover    {
+  @include card;
+  @include transition(transform $transition-base, box-shadow $transition-base);
+  &:hover { transform: translateY(-4px); box-shadow: $shadow-xl }
+}
+.card-header   { padding-bottom: $space-12; border-bottom: $border-width-thin solid $border-color-base; margin-bottom: $space-12 }
+.card-footer   { padding-top: $space-12; border-top: $border-width-thin solid $border-color-base; margin-top: $space-12 }
+
+// ---- Badges ----
+.badge {
+  display: inline-flex; align-items: center; gap: $space-2;
+  padding: 2px $space-6; border-radius: $border-radius-full;
+  font-size: $font-size-xs; font-weight: $font-weight-semibold; line-height: 1.6;
+}
+@each $name, $color in (
+  'primary': $brand-primary, 'secondary': $brand-secondary,
+  'success': $brand-success, 'warning': $brand-warning,
+  'danger': $brand-danger,   'info': $brand-info
+) {
+  .badge-#{$name} {
+    background: lighten($color, 38%);
+    color: darken($color, 15%);
+    border: 1px solid lighten($color, 25%);
+  }
+  .badge-#{$name}-solid { background: $color; color: white }
+}
+.badge-dot {
+  &::before { content: ''; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: currentColor; margin-right: 4px }
+}
+.badge-pulse {
+  &::before {
+    content: ''; display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+    background: currentColor; margin-right: 4px;
+    @include animate-infinite(glowPulse, 1.5s);
+  }
+}
+
+// ---- Form elements ----
+.form-group     { display: flex; flex-direction: column; gap: $space-4 }
+.form-label     { font-size: $font-size-sm; font-weight: $font-weight-medium; color: $gray-700 }
+.form-control   { @include input-base }
+.form-select    { @include input-base; cursor: pointer; appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M7 7l3 3 3-3'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 8px center; background-size: 16px;
+  padding-right: $space-28;
+}
+.form-textarea  { @include input-base; resize: vertical; min-height: 80px }
+.form-check     { display: flex; align-items: center; gap: $space-6; cursor: pointer }
+.form-hint      { font-size: $font-size-sm; color: $gray-500 }
+.form-error     { font-size: $font-size-sm; color: $brand-danger }
+.form-success   { font-size: $font-size-sm; color: $brand-success }
+.is-invalid .form-control, .form-control.is-invalid { border-color: $brand-danger; &:focus { box-shadow: 0 0 0 3px rgba($brand-danger, .2) } }
+.is-valid   .form-control, .form-control.is-valid   { border-color: $brand-success; &:focus { box-shadow: 0 0 0 3px rgba($brand-success, .2) } }
+
+// ---- Alerts ----
+.alert {
+  display: flex; align-items: flex-start; gap: $space-10;
+  padding: $space-12 $space-16; border-radius: $border-radius-md;
+  border: $border-width-thin solid transparent;
+  font-size: $font-size-base; line-height: $line-height-normal;
+}
+@each $name, $color in (
+  'primary': $brand-primary, 'success': $brand-success,
+  'warning': $brand-warning, 'danger': $brand-danger, 'info': $brand-info
+) {
+  .alert-#{$name} {
+    background: lighten($color, 44%);
+    border-color: lighten($color, 28%);
+    color: darken($color, 20%);
+  }
+}
+.alert-dismissible { padding-right: $space-40; position: relative }
+.alert-close {
+  position: absolute; top: $space-10; right: $space-12;
+  background: none; border: none; cursor: pointer; opacity: .5;
+  &:hover { opacity: 1 }
+}
+
+// ---- Tables ----
+.table { width: 100%; border-collapse: collapse; font-size: $font-size-base }
+.table th, .table td { padding: $space-10 $space-12; text-align: left; border-bottom: $border-width-thin solid $border-color-base }
+.table th { font-weight: $font-weight-semibold; color: $gray-700; background: $gray-50 }
+.table-striped tbody tr:nth-child(even) { background: $gray-50 }
+.table-hover tbody tr:hover { background: lighten($brand-primary, 46%) }
+.table-bordered { border: $border-width-thin solid $border-color-base }
+.table-bordered th, .table-bordered td { border: $border-width-thin solid $border-color-base }
+.table-sm th, .table-sm td { padding: $space-4 $space-8 }
+.table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch }
+
+// ---- Skeleton loaders ----
+@mixin skeleton-base {
+  background: linear-gradient(90deg, $gray-100 25%, $gray-200 50%, $gray-100 75%);
+  background-size: 200% 100%;
+  border-radius: $border-radius-base;
+  @include animate-infinite(skeletonWave, 1.5s, linear);
+}
+.skeleton         { @include skeleton-base; height: 16px; width: 100% }
+.skeleton-text    { @include skeleton-base; height: 14px; border-radius: 4px }
+.skeleton-title   { @include skeleton-base; height: 28px; width: 60%; border-radius: 4px }
+.skeleton-avatar  { @include skeleton-base; width: 40px; height: 40px; border-radius: 50% }
+.skeleton-button  { @include skeleton-base; height: 36px; width: 100px; border-radius: $border-radius-base }
+.skeleton-card    { @include skeleton-base; height: 200px; border-radius: $border-radius-md }
+.skeleton-banner  { @include skeleton-base; height: 120px; border-radius: $border-radius-md }
+
+// ---- Tooltip ----
+[data-tooltip] {
+  position: relative;
+  &::before, &::after { position: absolute; opacity: 0; pointer-events: none; @include transition(opacity $transition-fast) }
+  &::before {
+    content: attr(data-tooltip);
+    bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%);
+    background: $gray-900; color: white;
+    font-size: $font-size-xs; padding: $space-3 $space-6; border-radius: $border-radius-base;
+    white-space: nowrap; z-index: $z-tooltip;
+  }
+  &::after {
+    content: ''; bottom: calc(100% + 4px); left: 50%; transform: translateX(-50%);
+    border: 4px solid transparent; border-top-color: $gray-900;
+  }
+  &:hover::before, &:hover::after { opacity: 1 }
+}
+
+// ---- Modal overlay ----
+.modal-overlay {
+  @include fixed-fill; background: rgba($gray-900, .6);
+  display: flex; align-items: center; justify-content: center;
+  z-index: $z-modal; @include animate(fadeIn, 150ms);
+}
+.modal-dialog {
+  @include card($space-24, $border-radius-lg);
+  width: 90%; max-width: 540px; max-height: 90vh; overflow-y: auto;
+  @include animate(fadeInUp, 200ms);
+}
+.modal-header { @include flex-between; padding-bottom: $space-16; border-bottom: $border-width-thin solid $border-color-base }
+.modal-footer { @include flex-between; padding-top: $space-16; border-top: $border-width-thin solid $border-color-base }

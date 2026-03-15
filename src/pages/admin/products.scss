@@ -1,0 +1,204 @@
+// ============================================================
+// Admin Products — legacy technical debt page
+// Uses @import (deprecated), global selectors, vendor prefixes,
+// deprecated color functions, and heavy animation usage.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+// Page layout
+.admin-products {
+  min-height: 100vh;
+  background: $gray-50;
+  font-family: $font-family-base;
+
+  // Hero / header area
+  &__hero {
+    background: linear-gradient(135deg, $brand-primary 0%, $color-analogous-a 100%);
+    background-size: 200% 200%;
+    -webkit-animation: gradientFlow 8s ease infinite;
+            animation: gradientFlow 8s ease infinite;
+    padding: $space-48 $space-24;
+    color: white;
+    text-align: center;
+
+    h1 {
+      @include heading($font-size-5xl);
+      color: white;
+      -webkit-animation: fadeInDown 600ms ease both;
+              animation: fadeInDown 600ms ease both;
+      margin-bottom: $space-16;
+    }
+    p {
+      font-size: $font-size-lg;
+      opacity: .9;
+      -webkit-animation: fadeInUp 600ms ease 200ms both;
+              animation: fadeInUp 600ms ease 200ms both;
+    }
+    .cta {
+      display: inline-flex; gap: $space-12; margin-top: $space-24;
+      -webkit-animation: fadeIn 600ms ease 400ms both;
+              animation: fadeIn 600ms ease 400ms both;
+    }
+  }
+
+  // Content grid
+  &__content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: $space-40 $space-24;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $space-24;
+
+    @include respond-to('md') {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  // Cards with staggered entrance
+  &__card {
+    @include card;
+    @include transition(transform $transition-slow, box-shadow $transition-slow);
+    -webkit-animation: fadeInUp 400ms ease both;
+            animation: fadeInUp 400ms ease both;
+
+    @for $i from 1 through 12 {
+      &:nth-child(#{$i}) { animation-delay: #{$i * 80}ms }
+    }
+
+    &:hover {
+      @include transform(translateY(-6px));
+      box-shadow: $shadow-xl;
+    }
+
+    &-title {
+      @include heading($font-size-xl);
+      margin-bottom: $space-8;
+    }
+    &-body { color: $gray-600; line-height: $line-height-relaxed }
+    &-footer {
+      margin-top: $space-16;
+      padding-top: $space-12;
+      border-top: 1px solid $border-color-base;
+      @include flex-between;
+    }
+  }
+
+  // Animated stat counters
+  &__stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: $space-16;
+    padding: $space-32 $space-24;
+    background: white;
+    border-bottom: 1px solid $border-color-base;
+
+    @include respond-to('md') { grid-template-columns: repeat(2, 1fr) }
+    @include respond-to('sm') { grid-template-columns: 1fr }
+  }
+  &__stat {
+    text-align: center;
+    -webkit-animation: countUp 600ms ease both;
+            animation: countUp 600ms ease both;
+
+    @for $i from 1 through 4 {
+      &:nth-child(#{$i}) { animation-delay: #{$i * 100}ms }
+    }
+
+    &-value {
+      font-size: $font-size-4xl;
+      font-weight: $font-weight-black;
+      color: $brand-primary;
+      display: block;
+    }
+    &-label { font-size: $font-size-sm; color: $gray-500; text-transform: uppercase; letter-spacing: .08em }
+  }
+
+  // Loading skeletons
+  &__skeleton {
+    padding: $space-24;
+    display: grid;
+    gap: $space-16;
+    &-row { display: flex; align-items: center; gap: $space-12 }
+  }
+
+  // Notification toast
+  &__toast {
+    position: fixed; bottom: $space-24; right: $space-24;
+    z-index: $z-toast;
+    display: flex; flex-direction: column; gap: $space-8;
+
+    &-item {
+      @include card($space-12);
+      min-width: 280px;
+      @include flex-between;
+      -webkit-animation: slideInRight 300ms ease both;
+              animation: slideInRight 300ms ease both;
+
+      &.is-success { border-left: 4px solid $brand-success }
+      &.is-error   { border-left: 4px solid $brand-danger  }
+      &.is-info    { border-left: 4px solid $brand-info    }
+      &.is-warning { border-left: 4px solid $brand-warning }
+    }
+  }
+
+  // Floating action button
+  &__fab {
+    position: fixed; bottom: $space-24; right: $space-24;
+    width: 56px; height: 56px; border-radius: 50%;
+    background: $brand-primary;
+    color: white; border: none; cursor: pointer;
+    @include flex-center;
+    box-shadow: $shadow-lg;
+    @include transition(transform $transition-base, box-shadow $transition-base);
+    @include animate-infinite(glowPulse, 2s);
+
+    &:hover {
+      @include transform(scale(1.1));
+      box-shadow: $shadow-2xl;
+    }
+    &:active { @include transform(scale(.95)) }
+  }
+
+  
+  &__upload-zone {
+    border: 2px dashed $border-color-base; border-radius: $border-radius-lg;
+    padding: $space-40; text-align: center;
+    @include transition(border-color $transition-fast, background $transition-fast);
+    &.is-dragging { border-color: $brand-primary; background: lighten($brand-primary, 46%) }
+    &-icon { font-size: 48px; @include animate-infinite(float, 2s) }
+  }
+  &__image-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: $space-10 }
+  &__image-thumb {
+    aspect-ratio: 1; border-radius: $border-radius-base; overflow: hidden; position: relative;
+    -webkit-animation: popIn 300ms ease both; animation: popIn 300ms ease both;
+    &:hover .image-thumb__actions { opacity: 1 }
+    img { width: 100%; height: 100%; object-fit: cover }
+    &-actions {
+      @include absolute-fill; @include flex-center; gap: $space-8;
+      background: rgba($gray-900, .5); opacity: 0;
+      @include transition(opacity $transition-fast);
+    }
+  }
+  &__variants {
+    border: 1px solid $border-color-base; border-radius: $border-radius-md; overflow: hidden;
+    &-header { background: $gray-50; padding: $space-10 $space-16; font-weight: $font-weight-semibold; @include flex-between }
+    &-row {
+      display: grid; grid-template-columns: 1fr 1fr 1fr 1fr auto;
+      gap: $space-12; padding: $space-10 $space-16; align-items: center;
+      border-top: 1px solid $border-color-base;
+      -webkit-animation: fadeIn 300ms ease both; animation: fadeIn 300ms ease both;
+    }
+  }
+  &__seo { @include card }
+  &__seo-preview {
+    border: 1px solid $border-color-base; border-radius: $border-radius-base; padding: $space-16; margin-top: $space-12;
+    &-title { color: $brand-info; font-size: $font-size-lg; margin-bottom: $space-4 }
+    &-url   { color: $brand-success; font-size: $font-size-sm; margin-bottom: $space-8 }
+    &-desc  { color: $gray-700; font-size: $font-size-sm; @include text-clamp(2) }
+  }
+}
