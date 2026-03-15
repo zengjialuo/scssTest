@@ -25,7 +25,7 @@ const LOAD_PATHS = [
 ];
 
 // Scan src/pages/ for all SCSS files
-const pagesEntries = fs.readdirSync(path.join(SRC, 'pages'))
+const entries = fs.readdirSync(path.join(SRC, 'pages'))
   .filter(f => f.endsWith('.scss'))
   .map(f => {
     const name = path.basename(f, '.scss');
@@ -35,25 +35,6 @@ const pagesEntries = fs.readdirSync(path.join(SRC, 'pages'))
       label: `${name.charAt(0).toUpperCase() + name.slice(1)} page`,
     };
   });
-
-// Files to compile individually
-const entries = [
-  { input: 'src/index.scss', output: 'dist/index.css', label: 'Full bundle' },
-  { input: 'src/components/button.scss', output: 'dist/components/button.css', label: 'Button' },
-  { input: 'src/components/card.scss', output: 'dist/components/card.css', label: 'Card' },
-  { input: 'src/components/form.scss', output: 'dist/components/form.css', label: 'Form' },
-  { input: 'src/components/badge.scss', output: 'dist/components/badge.css', label: 'Badge' },
-  { input: 'src/components/modal.scss', output: 'dist/components/modal.css', label: 'Modal' },
-  { input: 'src/components/navigation.scss', output: 'dist/components/navigation.css', label: 'Navigation' },
-  { input: 'src/components/table.scss', output: 'dist/components/table.css', label: 'Table' },
-  { input: 'src/components/tooltip.scss', output: 'dist/components/tooltip.css', label: 'Tooltip' },
-  { input: 'src/components/alert.scss', output: 'dist/components/alert.css', label: 'Alert' },
-  ...pagesEntries,
-  { input: 'src/utilities/spacing.scss', output: 'dist/utilities/spacing.css', label: 'Spacing utilities' },
-  { input: 'src/utilities/typography.scss', output: 'dist/utilities/typography.css', label: 'Typography utilities' },
-  { input: 'src/utilities/display.scss', output: 'dist/utilities/display.css', label: 'Display utilities' },
-  { input: 'src/utilities/colors.scss', output: 'dist/utilities/colors.css', label: 'Color utilities' },
-];
 
 const sassCmd = path.join(ROOT, 'node_modules', '.bin', 'sass');
 const results = [];

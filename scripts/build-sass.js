@@ -16,7 +16,7 @@ if (!fs.existsSync(DIST)) fs.mkdirSync(DIST, { recursive: true });
 const loadPaths = [SRC, path.join(ROOT, 'packages'), path.join(ROOT, 'node_modules')];
 
 // Scan src/pages/ for all SCSS files
-const pagesEntries = fs.readdirSync(path.join(SRC, 'pages'))
+const entries = fs.readdirSync(path.join(SRC, 'pages'))
   .filter(f => f.endsWith('.scss'))
   .map(f => {
     const name = path.basename(f, '.scss');
@@ -26,24 +26,6 @@ const pagesEntries = fs.readdirSync(path.join(SRC, 'pages'))
       label: `${name.charAt(0).toUpperCase() + name.slice(1)} page`,
     };
   });
-
-const entries = [
-  { input: 'src/index.scss', output: 'dist/index.js-api.css', label: 'Full bundle' },
-  { input: 'src/components/button.scss', output: 'dist/components/button.js-api.css', label: 'Button' },
-  { input: 'src/components/card.scss', output: 'dist/components/card.js-api.css', label: 'Card' },
-  { input: 'src/components/form.scss', output: 'dist/components/form.js-api.css', label: 'Form' },
-  { input: 'src/components/badge.scss', output: 'dist/components/badge.js-api.css', label: 'Badge' },
-  { input: 'src/components/modal.scss', output: 'dist/components/modal.js-api.css', label: 'Modal' },
-  { input: 'src/components/navigation.scss', output: 'dist/components/navigation.js-api.css', label: 'Navigation' },
-  { input: 'src/components/table.scss', output: 'dist/components/table.js-api.css', label: 'Table' },
-  { input: 'src/components/tooltip.scss', output: 'dist/components/tooltip.js-api.css', label: 'Tooltip' },
-  { input: 'src/components/alert.scss', output: 'dist/components/alert.js-api.css', label: 'Alert' },
-  ...pagesEntries,
-  { input: 'src/utilities/spacing.scss', output: 'dist/utilities/spacing.js-api.css', label: 'Spacing utilities' },
-  { input: 'src/utilities/typography.scss', output: 'dist/utilities/typography.js-api.css', label: 'Typography utilities' },
-  { input: 'src/utilities/display.scss', output: 'dist/utilities/display.js-api.css', label: 'Display utilities' },
-  { input: 'src/utilities/colors.scss', output: 'dist/utilities/colors.js-api.css', label: 'Color utilities' },
-];
 
 console.log('\n📊 SCSS Compilation (sass JS API)\n');
 console.log('='.repeat(60));
