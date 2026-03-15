@@ -13,7 +13,7 @@ const DIST = path.join(ROOT, 'dist');
 
 if (!fs.existsSync(DIST)) fs.mkdirSync(DIST, { recursive: true });
 
-const loadPaths = [SRC, path.join(ROOT, 'node_modules')];
+const loadPaths = [SRC, path.join(ROOT, 'packages'), path.join(ROOT, 'node_modules')];
 
 const entries = [
   { input: 'src/index.scss', output: 'dist/index.js-api.css', label: 'Full bundle' },

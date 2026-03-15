@@ -5,7 +5,7 @@
   "scripts": {
     "build": "node scripts/build.js",
     "build:sass": "node scripts/build-sass.js",
-    "build:dart-sass": "sass --load-path=src --load-path=node_modules src/index.scss dist/index.css",
+    "build:dart-sass": "sass --load-path=src --load-path=packages --load-path=node_modules src/index.scss dist/index.css",
     "build:all": "node scripts/build-all.js"
   },
   "dependencies": {

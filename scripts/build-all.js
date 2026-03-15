@@ -16,8 +16,11 @@ const DIST = path.join(ROOT, 'dist');
 if (!fs.existsSync(DIST)) fs.mkdirSync(DIST, { recursive: true });
 
 // SCSS load paths
+// packages/ is listed first so common-mixin resolves directly without
+// relying on npm symlink behaviour (node_modules/common-mixin -> packages/common-mixin)
 const LOAD_PATHS = [
   `--load-path=${SRC}`,
+  `--load-path=${path.join(ROOT, 'packages')}`,
   `--load-path=${path.join(ROOT, 'node_modules')}`,
 ];
 
