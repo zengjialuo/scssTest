@@ -15,6 +15,16 @@ if (!fs.existsSync(DIST)) fs.mkdirSync(DIST, { recursive: true });
 
 const loadPaths = [SRC, path.join(ROOT, 'packages'), path.join(ROOT, 'node_modules')];
 
+// Alias importer: maps "@base/" → "src/scss/" so SCSS files can write
+//   @use '@base/variables/tokens'  instead of  @use 'scss/variables/tokens'
+const aliasImporter = {
+  findFileUrl(url) {
+    if (!url.startsWith('@base/')) return null;
+    const resolved = path.join(SRC, 'scss', url.slice('@base/'.length));
+    return new URL(`file://${resolved}`);
+  },
+};
+
 // Scan src/pages/ for all SCSS files
 const entries = fs.readdirSync(path.join(SRC, 'pages'))
   .filter(f => f.endsWith('.scss'))
@@ -43,6 +53,7 @@ for (const entry of entries) {
   try {
     const result = sass.compile(inputAbs, {
       loadPaths,
+      importers: [aliasImporter],
       sourceMap: false,
       style: 'expanded',
     });

@@ -1,0 +1,27 @@
+// Alias import demo
+// "@base/" is an alias for "src/scss/" registered in build-sass.js via importers[].findFileUrl
+// Without alias: @use 'scss/variables/tokens' as *;
+// With alias:
+@use '@base/variables/tokens' as *;
+@use '@base/mixins/layout' as *;
+
+.alias-demo-page {
+  background: $surface-page;
+  color: $color-action;
+
+  &__container {
+    @include page-content;
+  }
+
+  &__title {
+    color: $brand-primary;
+    font-size: 2rem;
+  }
+
+  &__badge {
+    background: $brand-secondary;
+    color: $surface-page;
+    padding: 4px 12px;
+    border-radius: 9999px;
+  }
+}
