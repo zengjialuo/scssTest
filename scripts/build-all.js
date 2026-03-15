@@ -24,6 +24,18 @@ const LOAD_PATHS = [
   `--load-path=${path.join(ROOT, 'node_modules')}`,
 ];
 
+// Scan src/pages/ for all SCSS files
+const pagesEntries = fs.readdirSync(path.join(SRC, 'pages'))
+  .filter(f => f.endsWith('.scss'))
+  .map(f => {
+    const name = path.basename(f, '.scss');
+    return {
+      input: `src/pages/${f}`,
+      output: `dist/pages/${name}.css`,
+      label: `${name.charAt(0).toUpperCase() + name.slice(1)} page`,
+    };
+  });
+
 // Files to compile individually
 const entries = [
   { input: 'src/index.scss', output: 'dist/index.css', label: 'Full bundle' },
@@ -36,9 +48,7 @@ const entries = [
   { input: 'src/components/table.scss', output: 'dist/components/table.css', label: 'Table' },
   { input: 'src/components/tooltip.scss', output: 'dist/components/tooltip.css', label: 'Tooltip' },
   { input: 'src/components/alert.scss', output: 'dist/components/alert.css', label: 'Alert' },
-  { input: 'src/pages/home.scss', output: 'dist/pages/home.css', label: 'Home page' },
-  { input: 'src/pages/dashboard.scss', output: 'dist/pages/dashboard.css', label: 'Dashboard page' },
-  { input: 'src/pages/auth.scss', output: 'dist/pages/auth.css', label: 'Auth page' },
+  ...pagesEntries,
   { input: 'src/utilities/spacing.scss', output: 'dist/utilities/spacing.css', label: 'Spacing utilities' },
   { input: 'src/utilities/typography.scss', output: 'dist/utilities/typography.css', label: 'Typography utilities' },
   { input: 'src/utilities/display.scss', output: 'dist/utilities/display.css', label: 'Display utilities' },

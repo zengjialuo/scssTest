@@ -15,6 +15,18 @@ if (!fs.existsSync(DIST)) fs.mkdirSync(DIST, { recursive: true });
 
 const loadPaths = [SRC, path.join(ROOT, 'packages'), path.join(ROOT, 'node_modules')];
 
+// Scan src/pages/ for all SCSS files
+const pagesEntries = fs.readdirSync(path.join(SRC, 'pages'))
+  .filter(f => f.endsWith('.scss'))
+  .map(f => {
+    const name = path.basename(f, '.scss');
+    return {
+      input: `src/pages/${f}`,
+      output: `dist/pages/${name}.js-api.css`,
+      label: `${name.charAt(0).toUpperCase() + name.slice(1)} page`,
+    };
+  });
+
 const entries = [
   { input: 'src/index.scss', output: 'dist/index.js-api.css', label: 'Full bundle' },
   { input: 'src/components/button.scss', output: 'dist/components/button.js-api.css', label: 'Button' },
@@ -26,9 +38,7 @@ const entries = [
   { input: 'src/components/table.scss', output: 'dist/components/table.js-api.css', label: 'Table' },
   { input: 'src/components/tooltip.scss', output: 'dist/components/tooltip.js-api.css', label: 'Tooltip' },
   { input: 'src/components/alert.scss', output: 'dist/components/alert.js-api.css', label: 'Alert' },
-  { input: 'src/pages/home.scss', output: 'dist/pages/home.js-api.css', label: 'Home page' },
-  { input: 'src/pages/dashboard.scss', output: 'dist/pages/dashboard.js-api.css', label: 'Dashboard page' },
-  { input: 'src/pages/auth.scss', output: 'dist/pages/auth.js-api.css', label: 'Auth page' },
+  ...pagesEntries,
   { input: 'src/utilities/spacing.scss', output: 'dist/utilities/spacing.js-api.css', label: 'Spacing utilities' },
   { input: 'src/utilities/typography.scss', output: 'dist/utilities/typography.js-api.css', label: 'Typography utilities' },
   { input: 'src/utilities/display.scss', output: 'dist/utilities/display.js-api.css', label: 'Display utilities' },
