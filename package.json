@@ -8,6 +8,9 @@
     "build:dart-sass": "sass --load-path=src --load-path=node_modules src/index.scss dist/index.css",
     "build:all": "node scripts/build-all.js"
   },
+  "dependencies": {
+    "common-mixin": "file:packages/common-mixin"
+  },
   "devDependencies": {
     "sass": "^1.70.0",
     "glob": "^10.3.10"
