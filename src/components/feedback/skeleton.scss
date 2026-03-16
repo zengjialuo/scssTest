@@ -1,13 +1,10 @@
 // ============================================================
 // Skeleton loader
-// Legacy technical debt: @import chain, deprecated color functions,
-// vendor-prefix mixins.
+// Uses @import (legacy) for vars and mixins.
+// Deprecated color functions via vars.
 // ============================================================
 @import 'scss/legacy/vars';
-@import 'scss/legacy/animations';
 @import 'scss/legacy/mixins';
-@import 'scss/legacy/utilities';
-@import 'scss/legacy/components';
 
 @mixin skel { background: linear-gradient(90deg, $gray-100 25%, $gray-200 50%, $gray-100 75%); background-size: 200% 100%; border-radius: $border-radius-base; @include animate-infinite(skeletonWave, 1.5s, linear) }
 .skel        { @include skel; height: 16px; width: 100% }

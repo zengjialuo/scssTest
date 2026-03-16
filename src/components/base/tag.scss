@@ -1,13 +1,10 @@
 // ============================================================
 // Tag / chip
-// Legacy technical debt: @import chain, deprecated color functions,
-// vendor-prefix mixins.
+// Uses @import (legacy) for vars and mixins.
+// Deprecated color functions via vars.
 // ============================================================
 @import 'scss/legacy/vars';
-@import 'scss/legacy/animations';
 @import 'scss/legacy/mixins';
-@import 'scss/legacy/utilities';
-@import 'scss/legacy/components';
 
 .tag { display: inline-flex; align-items: center; gap: $space-4; padding: 2px $space-8; border-radius: 9999px; font-size: $font-size-xs; font-weight: $font-weight-medium; line-height: 1.6 }
 .tag-primary   { background: lighten($brand-primary, 42%);   color: darken($brand-primary, 15%) }

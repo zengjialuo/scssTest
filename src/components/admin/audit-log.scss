@@ -1,13 +1,11 @@
 // ============================================================
 // Audit log row
-// Legacy technical debt: @import chain, deprecated color functions,
-// vendor-prefix mixins.
+// Uses @import (legacy) for vars and mixins.
+// Deprecated color functions via vars.
 // ============================================================
 @import 'scss/legacy/vars';
 @import 'scss/legacy/animations';
 @import 'scss/legacy/mixins';
-@import 'scss/legacy/utilities';
-@import 'scss/legacy/components';
 
 .audit-log { @include card($space-0); overflow: hidden }
 .audit-log__row { display: flex; align-items: flex-start; gap: $space-14; padding: $space-14 $space-16; border-bottom: 1px solid $border-color-base; @include transition(background $transition-fast); -webkit-animation: fadeIn 300ms ease both; animation: fadeIn 300ms ease both }

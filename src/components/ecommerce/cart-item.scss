@@ -1,13 +1,10 @@
 // ============================================================
 // Cart line item
-// Legacy technical debt: @import chain, deprecated color functions,
-// vendor-prefix mixins.
+// Uses @import (legacy) for vars and mixins.
+// Deprecated color functions via vars.
 // ============================================================
 @import 'scss/legacy/vars';
-@import 'scss/legacy/animations';
 @import 'scss/legacy/mixins';
-@import 'scss/legacy/utilities';
-@import 'scss/legacy/components';
 
 .cart-item { display: flex; gap: $space-14; padding: $space-16; border-bottom: 1px solid $border-color-base; @include transition(background $transition-fast) }
 .cart-item:hover { background: $gray-50 }

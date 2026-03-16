@@ -1,13 +1,11 @@
 // ============================================================
 // Date picker
-// Legacy technical debt: @import chain, deprecated color functions,
-// vendor-prefix mixins.
+// Uses @import (legacy) for vars and mixins.
+// Deprecated color functions via vars.
 // ============================================================
 @import 'scss/legacy/vars';
 @import 'scss/legacy/animations';
 @import 'scss/legacy/mixins';
-@import 'scss/legacy/utilities';
-@import 'scss/legacy/components';
 
 .date-picker { position: relative; display: inline-block }
 .date-picker__input { @include input-base; padding-right: $space-32; cursor: pointer; min-width: 200px }

@@ -1,13 +1,10 @@
 // ============================================================
 // Product card
-// Legacy technical debt: @import chain, deprecated color functions,
-// vendor-prefix mixins.
+// Uses @import (legacy) for vars and mixins.
+// Deprecated color functions via vars.
 // ============================================================
 @import 'scss/legacy/vars';
-@import 'scss/legacy/animations';
 @import 'scss/legacy/mixins';
-@import 'scss/legacy/utilities';
-@import 'scss/legacy/components';
 
 .product-card { @include card($space-0, $border-radius-md); overflow: hidden; @include transition(transform $transition-slow, box-shadow $transition-slow) }
 .product-card:hover { @include transform(translateY(-4px)); box-shadow: $shadow-xl }

@@ -1,13 +1,10 @@
 // ============================================================
 // Range slider
-// Legacy technical debt: @import chain, deprecated color functions,
-// vendor-prefix mixins.
+// Uses @import (legacy) for vars and mixins.
+// Deprecated color functions via vars.
 // ============================================================
 @import 'scss/legacy/vars';
-@import 'scss/legacy/animations';
 @import 'scss/legacy/mixins';
-@import 'scss/legacy/utilities';
-@import 'scss/legacy/components';
 
 .slider-wrap { position: relative; padding: $space-8 0 }
 .slider { -webkit-appearance: none; width: 100%; height: 4px; border-radius: 2px; background: $gray-200; outline: none; cursor: pointer }

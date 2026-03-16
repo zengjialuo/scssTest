@@ -1,13 +1,10 @@
 // ============================================================
 // Feature card
-// Legacy technical debt: @import chain, deprecated color functions,
-// vendor-prefix mixins.
+// Uses @import (legacy) for vars and mixins.
+// Deprecated color functions via vars.
 // ============================================================
 @import 'scss/legacy/vars';
-@import 'scss/legacy/animations';
 @import 'scss/legacy/mixins';
-@import 'scss/legacy/utilities';
-@import 'scss/legacy/components';
 
 .feature-card { @include card; @include transition(transform $transition-slow, box-shadow $transition-slow) }
 .feature-card:hover { @include transform(translateY(-4px)); box-shadow: $shadow-lg }

@@ -1,13 +1,10 @@
 // ============================================================
 // User avatar
-// Legacy technical debt: @import chain, deprecated color functions,
-// vendor-prefix mixins.
+// Uses @import (legacy) for vars and mixins.
+// Deprecated color functions via vars.
 // ============================================================
 @import 'scss/legacy/vars';
-@import 'scss/legacy/animations';
 @import 'scss/legacy/mixins';
-@import 'scss/legacy/utilities';
-@import 'scss/legacy/components';
 
 .avatar { display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; overflow: hidden; flex-shrink: 0; font-weight: $font-weight-semibold; background: $gray-200; color: $gray-600 }
 .avatar-xs  { width: 24px;  height: 24px;  font-size: $font-size-xs }

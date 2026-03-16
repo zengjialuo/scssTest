@@ -1,13 +1,11 @@
 // ============================================================
 // KPI card
-// Legacy technical debt: @import chain, deprecated color functions,
-// vendor-prefix mixins.
+// Uses @import (legacy) for vars and mixins.
+// Deprecated color functions via vars.
 // ============================================================
 @import 'scss/legacy/vars';
 @import 'scss/legacy/animations';
 @import 'scss/legacy/mixins';
-@import 'scss/legacy/utilities';
-@import 'scss/legacy/components';
 
 .kpi { @include card; display: flex; flex-direction: column; gap: $space-12; -webkit-animation: fadeInUp 400ms ease both; animation: fadeInUp 400ms ease both }
 .kpi__header { @include flex-between }

@@ -1,13 +1,11 @@
 // ============================================================
 // Back to top btn
-// Legacy technical debt: @import chain, deprecated color functions,
-// vendor-prefix mixins.
+// Uses @import (legacy) for vars and mixins.
+// Deprecated color functions via vars.
 // ============================================================
 @import 'scss/legacy/vars';
 @import 'scss/legacy/animations';
 @import 'scss/legacy/mixins';
-@import 'scss/legacy/utilities';
-@import 'scss/legacy/components';
 
 .back-to-top { position: fixed; bottom: $space-32; right: $space-32; width: 44px; height: 44px; background: $brand-primary; color: white; border: none; border-radius: 50%; cursor: pointer; @include flex-center; box-shadow: $shadow-lg; z-index: $z-sticky; @include transition(all $transition-base); opacity: 0; pointer-events: none }
 .back-to-top.is-visible { opacity: 1; pointer-events: auto; -webkit-animation: fadeInUp 300ms ease both; animation: fadeInUp 300ms ease both }

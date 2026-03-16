@@ -1,13 +1,10 @@
 // ============================================================
 // Page footer
-// Legacy technical debt: @import chain, deprecated color functions,
-// vendor-prefix mixins.
+// Uses @import (legacy) for vars and mixins.
+// Deprecated color functions via vars.
 // ============================================================
 @import 'scss/legacy/vars';
-@import 'scss/legacy/animations';
 @import 'scss/legacy/mixins';
-@import 'scss/legacy/utilities';
-@import 'scss/legacy/components';
 
 .page-footer { background: $gray-900; color: $gray-400; padding: $space-48 $space-24 $space-24 }
 .page-footer__grid { display: grid; grid-template-columns: 2fr repeat(3, 1fr); gap: $space-32; max-width: 1200px; margin: 0 auto $space-32; @include respond-to("md") { grid-template-columns: 1fr } }

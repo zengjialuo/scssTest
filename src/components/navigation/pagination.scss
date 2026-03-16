@@ -1,13 +1,10 @@
 // ============================================================
 // Pagination
-// Legacy technical debt: @import chain, deprecated color functions,
-// vendor-prefix mixins.
+// Uses @import (legacy) for vars and mixins.
+// Deprecated color functions via vars.
 // ============================================================
 @import 'scss/legacy/vars';
-@import 'scss/legacy/animations';
 @import 'scss/legacy/mixins';
-@import 'scss/legacy/utilities';
-@import 'scss/legacy/components';
 
 .pagination { display: flex; align-items: center; gap: $space-4 }
 .pagination__btn { width: 32px; height: 32px; @include flex-center; border: 1px solid $border-color-base; border-radius: $border-radius-base; cursor: pointer; font-size: $font-size-sm; @include transition(all $transition-fast) }

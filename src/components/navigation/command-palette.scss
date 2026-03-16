@@ -1,13 +1,11 @@
 // ============================================================
 // Command palette
-// Legacy technical debt: @import chain, deprecated color functions,
-// vendor-prefix mixins.
+// Uses @import (legacy) for vars and mixins.
+// Deprecated color functions via vars.
 // ============================================================
 @import 'scss/legacy/vars';
 @import 'scss/legacy/animations';
 @import 'scss/legacy/mixins';
-@import 'scss/legacy/utilities';
-@import 'scss/legacy/components';
 
 .command-palette { @include fixed-fill; @include flex-center; z-index: $z-topmost; background: rgba($gray-900, .6); -webkit-animation: fadeIn 150ms ease both; animation: fadeIn 150ms ease both }
 .command-palette__dialog { width: 540px; max-height: 480px; @include card($space-0, $border-radius-lg); @include flex-column; overflow: hidden; -webkit-animation: fadeInDown 200ms ease both; animation: fadeInDown 200ms ease both }

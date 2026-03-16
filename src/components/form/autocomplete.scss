@@ -1,13 +1,11 @@
 // ============================================================
 // Autocomplete
-// Legacy technical debt: @import chain, deprecated color functions,
-// vendor-prefix mixins.
+// Uses @import (legacy) for vars and mixins.
+// Deprecated color functions via vars.
 // ============================================================
 @import 'scss/legacy/vars';
 @import 'scss/legacy/animations';
 @import 'scss/legacy/mixins';
-@import 'scss/legacy/utilities';
-@import 'scss/legacy/components';
 
 .autocomplete { position: relative }
 .autocomplete__list { position: absolute; top: calc(100% + $space-4); left: 0; right: 0; background: white; border: 1px solid $border-color-base; border-radius: $border-radius-md; box-shadow: $shadow-lg; max-height: 240px; overflow-y: auto; z-index: $z-dropdown; @include scrollbar-thin; -webkit-animation: fadeInDown 150ms ease both; animation: fadeInDown 150ms ease both }

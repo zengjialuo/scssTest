@@ -1,13 +1,11 @@
 // ============================================================
 // KPI stat card
-// Legacy technical debt: @import chain, deprecated color functions,
-// vendor-prefix mixins.
+// Uses @import (legacy) for vars and mixins.
+// Deprecated color functions via vars.
 // ============================================================
 @import 'scss/legacy/vars';
 @import 'scss/legacy/animations';
 @import 'scss/legacy/mixins';
-@import 'scss/legacy/utilities';
-@import 'scss/legacy/components';
 
 .stat-card { @include card; -webkit-animation: fadeInUp 400ms ease both; animation: fadeInUp 400ms ease both }
 .stat-card__label { font-size: $font-size-sm; color: $gray-500; text-transform: uppercase; letter-spacing: .06em; margin-bottom: $space-6 }

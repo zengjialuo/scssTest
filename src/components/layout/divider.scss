@@ -1,13 +1,10 @@
 // ============================================================
 // Divider
-// Legacy technical debt: @import chain, deprecated color functions,
-// vendor-prefix mixins.
+// Uses @import (legacy) for vars and mixins.
+// Deprecated color functions via vars.
 // ============================================================
 @import 'scss/legacy/vars';
-@import 'scss/legacy/animations';
 @import 'scss/legacy/mixins';
-@import 'scss/legacy/utilities';
-@import 'scss/legacy/components';
 
 .divider { border: none; border-top: 1px solid $border-color-base; margin: $space-16 0 }
 .divider-vertical { border: none; border-left: 1px solid $border-color-base; height: 100%; margin: 0 $space-16 }

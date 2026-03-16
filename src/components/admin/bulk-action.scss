@@ -1,13 +1,11 @@
 // ============================================================
 // Bulk action bar
-// Legacy technical debt: @import chain, deprecated color functions,
-// vendor-prefix mixins.
+// Uses @import (legacy) for vars and mixins.
+// Deprecated color functions via vars.
 // ============================================================
 @import 'scss/legacy/vars';
 @import 'scss/legacy/animations';
 @import 'scss/legacy/mixins';
-@import 'scss/legacy/utilities';
-@import 'scss/legacy/components';
 
 .bulk-action { display: flex; align-items: center; gap: $space-16; padding: $space-12 $space-20; background: lighten($brand-primary, 44%); border: 1px solid lighten($brand-primary, 30%); border-radius: $border-radius-md; margin-bottom: $space-16; -webkit-animation: slideInTop 250ms ease both; animation: slideInTop 250ms ease both }
 .bulk-action__count { font-weight: $font-weight-semibold; color: $brand-primary; white-space: nowrap }
