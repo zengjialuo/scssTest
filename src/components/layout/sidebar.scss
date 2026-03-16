@@ -1,0 +1,20 @@
+// ============================================================
+// Sidebar nav
+// Legacy technical debt: @import chain, deprecated color functions,
+// vendor-prefix mixins.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+.sidebar { width: 240px; height: 100vh; background: white; border-right: 1px solid $border-color-base; @include flex-column; overflow-y: auto; position: fixed; left: 0; top: 0; z-index: $z-sticky; @include scrollbar-thin; @include transition(transform $transition-base) }
+.sidebar.is-collapsed { transform: translateX(-100%) }
+.sidebar__header { padding: $space-16 $space-20; border-bottom: 1px solid $border-color-base; @include flex-between }
+.sidebar__section { padding: $space-8 $space-12 }
+.sidebar__label { font-size: $font-size-xs; font-weight: $font-weight-semibold; color: $gray-400; text-transform: uppercase; letter-spacing: .08em; padding: $space-8 $space-8 $space-4 }
+.sidebar__item { display: flex; align-items: center; gap: $space-10; padding: $space-8 $space-8; border-radius: $border-radius-base; cursor: pointer; color: $gray-700; @include transition(all $transition-fast); font-size: $font-size-sm }
+.sidebar__item.is-active { background: lighten($brand-primary, 44%); color: $brand-primary; font-weight: $font-weight-medium }
+.sidebar__item:hover:not(.is-active) { background: $gray-50 }
+.sidebar__badge { margin-left: auto }

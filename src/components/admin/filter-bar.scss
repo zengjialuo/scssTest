@@ -1,0 +1,19 @@
+// ============================================================
+// Filter toolbar
+// Legacy technical debt: @import chain, deprecated color functions,
+// vendor-prefix mixins.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+.filter-bar { display: flex; flex-wrap: wrap; align-items: center; gap: $space-10; padding: $space-14 $space-16; background: white; border: 1px solid $border-color-base; border-radius: $border-radius-md; margin-bottom: $space-16 }
+.filter-bar__search { flex: 1; min-width: 200px }
+.filter-bar__group { display: flex; align-items: center; gap: $space-8 }
+.filter-bar__select { @include input-base; width: auto; font-size: $font-size-sm; padding: $space-4 $space-10 }
+.filter-bar__date { @include input-base; width: 130px; font-size: $font-size-sm; padding: $space-4 $space-10 }
+.filter-bar__chip { display: inline-flex; align-items: center; gap: $space-4; padding: $space-4 $space-10; background: lighten($brand-primary, 43%); color: $brand-primary; border-radius: 9999px; font-size: $font-size-xs; font-weight: $font-weight-medium }
+.filter-bar__chip-close { cursor: pointer; opacity: .7; &:hover { opacity: 1 } }
+.filter-bar__clear { font-size: $font-size-sm; color: $brand-danger; cursor: pointer; background: none; border: none; &:hover { text-decoration: underline } }

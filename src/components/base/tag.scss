@@ -1,0 +1,18 @@
+// ============================================================
+// Tag / chip
+// Legacy technical debt: @import chain, deprecated color functions,
+// vendor-prefix mixins.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+.tag { display: inline-flex; align-items: center; gap: $space-4; padding: 2px $space-8; border-radius: 9999px; font-size: $font-size-xs; font-weight: $font-weight-medium; line-height: 1.6 }
+.tag-primary   { background: lighten($brand-primary, 42%);   color: darken($brand-primary, 15%) }
+.tag-secondary { background: lighten($brand-secondary, 42%); color: darken($brand-secondary, 15%) }
+.tag-success   { background: lighten($brand-success, 42%);   color: darken($brand-success, 15%) }
+.tag-warning   { background: lighten($brand-warning, 35%);   color: darken($brand-warning, 25%) }
+.tag-danger    { background: lighten($brand-danger, 42%);    color: darken($brand-danger, 15%) }
+.tag-close { cursor: pointer; opacity: .6; margin-left: $space-2; &:hover { opacity: 1 } }

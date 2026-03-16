@@ -1,0 +1,18 @@
+// ============================================================
+// Form field wrapper
+// Legacy technical debt: @import chain, deprecated color functions,
+// vendor-prefix mixins.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+.form-field { display: flex; flex-direction: column; gap: $space-6 }
+.form-field__label { font-size: $font-size-sm; font-weight: $font-weight-medium; color: $gray-700 }
+.form-field__label.is-required::after { content: " *"; color: $brand-danger }
+.form-field__hint  { font-size: $font-size-xs; color: $gray-500 }
+.form-field__error { font-size: $font-size-xs; color: $brand-danger; display: flex; align-items: center; gap: $space-4 }
+.form-field.has-error .form-control { border-color: $brand-danger; &:focus { box-shadow: 0 0 0 3px rgba($brand-danger, .2) } }
+.form-field.has-success .form-control { border-color: $brand-success }

@@ -1,0 +1,19 @@
+// ============================================================
+// Popover
+// Legacy technical debt: @import chain, deprecated color functions,
+// vendor-prefix mixins.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+.popover-trigger { display: inline-flex; position: relative }
+.popover { position: absolute; background: white; border-radius: $border-radius-md; box-shadow: $shadow-xl; border: 1px solid $border-color-base; z-index: $z-popover; min-width: 200px; max-width: 320px; -webkit-animation: fadeInDown 150ms ease both; animation: fadeInDown 150ms ease both }
+.popover--bottom { top: calc(100% + 8px); left: 50%; transform: translateX(-50%) }
+.popover--top    { bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%); animation-name: fadeInUp }
+.popover--right  { left: calc(100% + 8px); top: 50%; transform: translateY(-50%) }
+.popover__header { padding: $space-12 $space-16; border-bottom: 1px solid $border-color-base; font-weight: $font-weight-semibold }
+.popover__body   { padding: $space-12 $space-16 }
+.popover__footer { padding: $space-10 $space-16; border-top: 1px solid $border-color-base; @include flex-between }

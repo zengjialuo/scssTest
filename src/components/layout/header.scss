@@ -1,0 +1,15 @@
+// ============================================================
+// Page header
+// Legacy technical debt: @import chain, deprecated color functions,
+// vendor-prefix mixins.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+.page-header { height: 60px; background: white; border-bottom: 1px solid $border-color-base; @include flex-between; padding: 0 $space-24; position: sticky; top: 0; z-index: $z-sticky; box-shadow: $shadow-sm; -webkit-animation: slideInTop 300ms ease both; animation: slideInTop 300ms ease both }
+.page-header__logo { font-size: $font-size-lg; font-weight: $font-weight-black; color: $brand-primary }
+.page-header__nav { display: flex; align-items: center; gap: $space-8 }
+.page-header__actions { display: flex; align-items: center; gap: $space-12 }

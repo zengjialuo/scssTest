@@ -1,0 +1,16 @@
+// ============================================================
+// Divider
+// Legacy technical debt: @import chain, deprecated color functions,
+// vendor-prefix mixins.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+.divider { border: none; border-top: 1px solid $border-color-base; margin: $space-16 0 }
+.divider-vertical { border: none; border-left: 1px solid $border-color-base; height: 100%; margin: 0 $space-16 }
+.divider-with-text { display: flex; align-items: center; gap: $space-12; margin: $space-20 0 }
+.divider-with-text::before, .divider-with-text::after { content: ""; flex: 1; border-top: 1px solid $border-color-base }
+.divider-with-text span { font-size: $font-size-sm; color: $gray-400; white-space: nowrap }

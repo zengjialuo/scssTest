@@ -1,0 +1,18 @@
+// ============================================================
+// Autocomplete
+// Legacy technical debt: @import chain, deprecated color functions,
+// vendor-prefix mixins.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+.autocomplete { position: relative }
+.autocomplete__list { position: absolute; top: calc(100% + $space-4); left: 0; right: 0; background: white; border: 1px solid $border-color-base; border-radius: $border-radius-md; box-shadow: $shadow-lg; max-height: 240px; overflow-y: auto; z-index: $z-dropdown; @include scrollbar-thin; -webkit-animation: fadeInDown 150ms ease both; animation: fadeInDown 150ms ease both }
+.autocomplete__item { padding: $space-8 $space-14; cursor: pointer; font-size: $font-size-sm; @include transition(background $transition-fast) }
+.autocomplete__item:hover, .autocomplete__item.is-focused { background: $gray-50 }
+.autocomplete__item.is-selected { background: lighten($brand-primary, 44%); color: $brand-primary }
+.autocomplete__match { background: lighten($brand-warning, 35%); color: darken($brand-warning, 20%); border-radius: 2px; padding: 0 2px }
+.autocomplete__group { padding: $space-6 $space-14; font-size: $font-size-xs; font-weight: $font-weight-semibold; color: $gray-400; text-transform: uppercase; letter-spacing: .06em; background: $gray-50 }

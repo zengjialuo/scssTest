@@ -1,0 +1,18 @@
+// ============================================================
+// Testimonial card
+// Legacy technical debt: @import chain, deprecated color functions,
+// vendor-prefix mixins.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+.testimonial { @include card; position: relative }
+.testimonial__quote { font-size: $font-size-4xl; color: $brand-primary; line-height: 1; position: absolute; top: $space-16; right: $space-20; opacity: .3 }
+.testimonial__text { font-size: $font-size-lg; line-height: $line-height-relaxed; color: $gray-700; font-style: italic; margin-bottom: $space-20; @include text-clamp(5) }
+.testimonial__author { display: flex; align-items: center; gap: $space-12 }
+.testimonial__name   { font-weight: $font-weight-semibold }
+.testimonial__role   { font-size: $font-size-sm; color: $gray-500 }
+.testimonial__stars  { display: flex; gap: $space-2; color: $brand-warning; margin-bottom: $space-12 }

@@ -1,0 +1,18 @@
+// ============================================================
+// Hero section
+// Legacy technical debt: @import chain, deprecated color functions,
+// vendor-prefix mixins.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+.hero { min-height: 70vh; @include flex-column; align-items: center; justify-content: center; text-align: center; padding: $space-64 $space-24; position: relative; overflow: hidden }
+.hero__bg { @include absolute-fill; background: linear-gradient(135deg, $brand-primary 0%, $color-complement 100%); background-size: 200% 200%; -webkit-animation: gradientFlow 10s ease infinite; animation: gradientFlow 10s ease infinite }
+.hero__content { position: relative; z-index: 1; color: white; max-width: 720px }
+.hero__tag { display: inline-flex; align-items: center; gap: $space-6; background: rgba(white,.2); color: white; padding: $space-4 $space-12; border-radius: 9999px; font-size: $font-size-sm; margin-bottom: $space-20; -webkit-animation: fadeIn 600ms ease both; animation: fadeIn 600ms ease both }
+.hero__title { @include heading($font-size-6xl); color: white; margin-bottom: $space-20; -webkit-animation: fadeInUp 700ms ease both; animation: fadeInUp 700ms ease both }
+.hero__subtitle { font-size: $font-size-xl; opacity: .9; margin-bottom: $space-32; -webkit-animation: fadeIn 700ms ease 200ms both; animation: fadeIn 700ms ease 200ms both }
+.hero__actions { display: flex; gap: $space-16; justify-content: center; flex-wrap: wrap; -webkit-animation: fadeInUp 700ms ease 400ms both; animation: fadeInUp 700ms ease 400ms both }

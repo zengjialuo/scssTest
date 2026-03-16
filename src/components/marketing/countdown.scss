@@ -1,0 +1,16 @@
+// ============================================================
+// Countdown timer
+// Legacy technical debt: @import chain, deprecated color functions,
+// vendor-prefix mixins.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+.countdown { display: flex; align-items: center; gap: $space-8 }
+.countdown__unit { text-align: center }
+.countdown__value { font-size: $font-size-4xl; font-weight: $font-weight-black; display: block; line-height: 1; -webkit-animation: countUp 200ms ease; animation: countUp 200ms ease }
+.countdown__label { font-size: $font-size-xs; text-transform: uppercase; letter-spacing: .06em; opacity: .7 }
+.countdown__sep { font-size: $font-size-4xl; font-weight: $font-weight-black; margin-bottom: $space-16; @include animate-infinite(blinkCursor, 1s) }

@@ -1,0 +1,22 @@
+// ============================================================
+// KPI card
+// Legacy technical debt: @import chain, deprecated color functions,
+// vendor-prefix mixins.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+.kpi { @include card; display: flex; flex-direction: column; gap: $space-12; -webkit-animation: fadeInUp 400ms ease both; animation: fadeInUp 400ms ease both }
+.kpi__header { @include flex-between }
+.kpi__icon { width: 44px; height: 44px; border-radius: $border-radius-md; @include flex-center; font-size: 20px }
+.kpi__title  { font-size: $font-size-sm; color: $gray-500 }
+.kpi__value  { font-size: $font-size-3xl; font-weight: $font-weight-black; -webkit-animation: countUp 500ms ease both; animation: countUp 500ms ease both }
+.kpi__trend  { display: flex; align-items: center; gap: $space-4; font-size: $font-size-sm }
+.kpi__trend--up   { color: $brand-success }
+.kpi__trend--down { color: $brand-danger }
+.kpi__sparkline   { height: 32px; overflow: hidden }
+.kpi__realtime { display: flex; align-items: center; gap: $space-6; font-size: $font-size-xs; color: $brand-success }
+.kpi__realtime-dot { width: 6px; height: 6px; border-radius: 50%; background: $brand-success; @include animate-infinite(glowPulse, 1.5s) }

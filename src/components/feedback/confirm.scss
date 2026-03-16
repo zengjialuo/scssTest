@@ -1,0 +1,16 @@
+// ============================================================
+// Confirm dialog
+// Legacy technical debt: @import chain, deprecated color functions,
+// vendor-prefix mixins.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+.confirm { @include card($space-24, $border-radius-lg); width: 320px; text-align: center; -webkit-animation: bounceIn 300ms ease both; animation: bounceIn 300ms ease both }
+.confirm__icon { font-size: 48px; margin-bottom: $space-16 }
+.confirm__title { @include heading($font-size-xl); margin-bottom: $space-8 }
+.confirm__desc  { color: $gray-500; margin-bottom: $space-24; line-height: $line-height-relaxed }
+.confirm__actions { display: flex; gap: $space-12; justify-content: center }

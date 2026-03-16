@@ -1,0 +1,19 @@
+// ============================================================
+// Tree view
+// Legacy technical debt: @import chain, deprecated color functions,
+// vendor-prefix mixins.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+.tree__node { padding-left: $space-20; position: relative }
+.tree__node:not(:last-child)::before { content: ""; position: absolute; left: 8px; top: 24px; bottom: 0; width: 1px; background: $gray-200 }
+.tree__row { display: flex; align-items: center; gap: $space-8; padding: $space-6 $space-8; border-radius: $border-radius-base; cursor: pointer; @include transition(background $transition-fast); -webkit-animation: fadeIn 200ms ease both; animation: fadeIn 200ms ease both }
+.tree__row:hover { background: $gray-50 }
+.tree__row.is-selected { background: lighten($brand-primary, 44%); color: $brand-primary }
+.tree__toggle { width: 16px; height: 16px; @include flex-center; flex-shrink: 0; color: $gray-400; @include transition(transform $transition-fast) }
+.tree__toggle.is-open { transform: rotate(90deg) }
+.tree__label { font-size: $font-size-sm; @include text-truncate }

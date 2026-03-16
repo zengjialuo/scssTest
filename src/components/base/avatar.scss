@@ -1,0 +1,20 @@
+// ============================================================
+// User avatar
+// Legacy technical debt: @import chain, deprecated color functions,
+// vendor-prefix mixins.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+.avatar { display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; overflow: hidden; flex-shrink: 0; font-weight: $font-weight-semibold; background: $gray-200; color: $gray-600 }
+.avatar-xs  { width: 24px;  height: 24px;  font-size: $font-size-xs }
+.avatar-sm  { width: 32px;  height: 32px;  font-size: $font-size-sm }
+.avatar-md  { width: 40px;  height: 40px;  font-size: $font-size-base }
+.avatar-lg  { width: 48px;  height: 48px;  font-size: $font-size-md }
+.avatar-xl  { width: 64px;  height: 64px;  font-size: $font-size-xl }
+.avatar-2xl { width: 96px;  height: 96px;  font-size: $font-size-3xl }
+.avatar-status { position: relative }
+.avatar-status::after { content: ""; position: absolute; bottom: 0; right: 0; width: 10px; height: 10px; border-radius: 50%; border: 2px solid white; background: $brand-success; @include animate-infinite(glowPulse, 2s) }

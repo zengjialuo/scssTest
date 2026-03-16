@@ -1,0 +1,17 @@
+// ============================================================
+// Page footer
+// Legacy technical debt: @import chain, deprecated color functions,
+// vendor-prefix mixins.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+.page-footer { background: $gray-900; color: $gray-400; padding: $space-48 $space-24 $space-24 }
+.page-footer__grid { display: grid; grid-template-columns: 2fr repeat(3, 1fr); gap: $space-32; max-width: 1200px; margin: 0 auto $space-32; @include respond-to("md") { grid-template-columns: 1fr } }
+.page-footer__brand { color: white; font-size: $font-size-xl; font-weight: $font-weight-black; margin-bottom: $space-12 }
+.page-footer__title { color: white; font-weight: $font-weight-semibold; margin-bottom: $space-16 }
+.page-footer__link { display: block; color: $gray-400; margin-bottom: $space-8; @include transition(color $transition-fast); &:hover { color: white } }
+.page-footer__bottom { border-top: 1px solid $gray-700; padding-top: $space-24; @include flex-between; @include respond-to("sm") { flex-direction: column; gap: $space-12 } }

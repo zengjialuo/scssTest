@@ -1,0 +1,19 @@
+// ============================================================
+// Progress stepper
+// Legacy technical debt: @import chain, deprecated color functions,
+// vendor-prefix mixins.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+.stepper { display: flex; align-items: flex-start; gap: 0 }
+.stepper__step { display: flex; flex: 1; align-items: flex-start; gap: 0; position: relative }
+.stepper__step:not(:last-child)::after { content: ""; position: absolute; top: 16px; left: calc(50% + 16px); right: calc(-50% + 16px); height: 2px; background: $gray-200 }
+.stepper__step.is-done::after { background: $brand-success }
+.stepper__icon { width: 32px; height: 32px; border-radius: 50%; @include flex-center; flex-shrink: 0; border: 2px solid $gray-200; background: white; font-size: $font-size-sm; font-weight: $font-weight-bold; color: $gray-400; z-index: 1; @include transition(all $transition-base) }
+.stepper__step.is-active .stepper__icon { border-color: $brand-primary; color: $brand-primary; @include animate-infinite(scaleBreath, 2s) }
+.stepper__step.is-done .stepper__icon { background: $brand-success; border-color: $brand-success; color: white; -webkit-animation: popIn 300ms ease; animation: popIn 300ms ease }
+.stepper__label { font-size: $font-size-xs; text-align: center; margin-top: $space-6; color: $gray-500 }

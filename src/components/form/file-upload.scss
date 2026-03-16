@@ -1,0 +1,20 @@
+// ============================================================
+// File upload zone
+// Legacy technical debt: @import chain, deprecated color functions,
+// vendor-prefix mixins.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+.file-upload { border: 2px dashed $border-color-base; border-radius: $border-radius-lg; padding: $space-40; text-align: center; cursor: pointer; @include transition(all $transition-fast) }
+.file-upload:hover, .file-upload.is-dragover { border-color: $brand-primary; background: lighten($brand-primary, 46%) }
+.file-upload__icon { font-size: 48px; color: $gray-400; margin-bottom: $space-12; @include animate-infinite(float, 2.5s) }
+.file-upload__title { font-weight: $font-weight-semibold; margin-bottom: $space-4 }
+.file-upload__hint  { font-size: $font-size-sm; color: $gray-500 }
+.file-upload__list  { margin-top: $space-20; text-align: left }
+.file-upload__file  { display: flex; align-items: center; gap: $space-10; padding: $space-8 $space-12; background: $gray-50; border-radius: $border-radius-base; margin-bottom: $space-8 }
+.file-upload__file-name { flex: 1; font-size: $font-size-sm; @include text-truncate }
+.file-upload__file-size { font-size: $font-size-xs; color: $gray-400 }

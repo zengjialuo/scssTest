@@ -1,0 +1,14 @@
+// ============================================================
+// Wishlist button
+// Legacy technical debt: @import chain, deprecated color functions,
+// vendor-prefix mixins.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+.wishlist-btn { width: 36px; height: 36px; border-radius: 50%; border: 1px solid $border-color-base; background: white; @include flex-center; cursor: pointer; @include transition(all $transition-fast) }
+.wishlist-btn:hover { border-color: $brand-secondary; color: $brand-secondary }
+.wishlist-btn.is-active { background: $brand-secondary; border-color: $brand-secondary; color: white; -webkit-animation: heartbeat 600ms ease; animation: heartbeat 600ms ease }

@@ -1,0 +1,23 @@
+// ============================================================
+// Calendar
+// Legacy technical debt: @import chain, deprecated color functions,
+// vendor-prefix mixins.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+.calendar { @include card }
+.calendar__header { @include flex-between; margin-bottom: $space-16 }
+.calendar__nav-btn { width: 32px; height: 32px; @include flex-center; border-radius: $border-radius-base; border: 1px solid $border-color-base; cursor: pointer; @include transition(all $transition-fast); &:hover { background: $gray-50 } }
+.calendar__title { font-weight: $font-weight-semibold; font-size: $font-size-md }
+.calendar__grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px }
+.calendar__weekday { text-align: center; font-size: $font-size-xs; font-weight: $font-weight-semibold; color: $gray-400; padding: $space-6 0; text-transform: uppercase }
+.calendar__day { aspect-ratio: 1; @include flex-center; font-size: $font-size-sm; border-radius: $border-radius-base; cursor: pointer; @include transition(all $transition-fast) }
+.calendar__day:hover { background: $gray-100 }
+.calendar__day.is-today { background: $brand-primary; color: white; font-weight: $font-weight-bold }
+.calendar__day.is-selected { background: lighten($brand-primary, 40%); color: $brand-primary; font-weight: $font-weight-semibold }
+.calendar__day.is-outside { color: $gray-300 }
+.calendar__day.is-event::after { content: ""; display: block; width: 4px; height: 4px; border-radius: 50%; background: $brand-secondary; margin: 2px auto 0 }

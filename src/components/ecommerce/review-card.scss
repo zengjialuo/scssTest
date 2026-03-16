@@ -1,0 +1,21 @@
+// ============================================================
+// Review card
+// Legacy technical debt: @import chain, deprecated color functions,
+// vendor-prefix mixins.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+.review-card { @include card; -webkit-animation: fadeIn 400ms ease both; animation: fadeIn 400ms ease both }
+.review-card__header { @include flex-between; margin-bottom: $space-12 }
+.review-card__author { display: flex; align-items: center; gap: $space-10 }
+.review-card__name { font-weight: $font-weight-semibold }
+.review-card__date { font-size: $font-size-xs; color: $gray-400 }
+.review-card__verified { font-size: $font-size-xs; color: $brand-success; margin-top: $space-2 }
+.review-card__text { color: $gray-700; line-height: $line-height-relaxed; margin: $space-12 0; @include text-clamp(4) }
+.review-card__images { display: flex; gap: $space-8; flex-wrap: wrap }
+.review-card__img { width: 60px; height: 60px; border-radius: $border-radius-base; object-fit: cover; cursor: pointer; @include transition(transform $transition-fast); &:hover { @include transform(scale(1.05)) } }
+.review-card__helpful { display: flex; align-items: center; gap: $space-8; font-size: $font-size-sm; color: $gray-500; padding-top: $space-12; border-top: 1px solid $border-color-base }

@@ -1,0 +1,15 @@
+// ============================================================
+// Select dropdown
+// Legacy technical debt: @import chain, deprecated color functions,
+// vendor-prefix mixins.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+.select-wrap { position: relative }
+.select { @include input-base; appearance: none; padding-right: $space-32; cursor: pointer }
+.select-chevron { position: absolute; right: $space-8; top: 50%; transform: translateY(-50%); pointer-events: none; color: $gray-400; @include transition(transform $transition-fast) }
+.select.is-open ~ .select-chevron { transform: translateY(-50%) rotate(180deg) }

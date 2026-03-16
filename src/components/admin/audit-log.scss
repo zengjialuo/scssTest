@@ -1,0 +1,22 @@
+// ============================================================
+// Audit log row
+// Legacy technical debt: @import chain, deprecated color functions,
+// vendor-prefix mixins.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+.audit-log { @include card($space-0); overflow: hidden }
+.audit-log__row { display: flex; align-items: flex-start; gap: $space-14; padding: $space-14 $space-16; border-bottom: 1px solid $border-color-base; @include transition(background $transition-fast); -webkit-animation: fadeIn 300ms ease both; animation: fadeIn 300ms ease both }
+.audit-log__row:hover { background: $gray-50 }
+.audit-log__icon { width: 36px; height: 36px; border-radius: 50%; @include flex-center; flex-shrink: 0; font-size: 16px }
+.audit-log__icon--create { background: lighten($brand-success, 42%); color: $brand-success }
+.audit-log__icon--update { background: lighten($brand-info, 42%); color: $brand-info }
+.audit-log__icon--delete { background: lighten($brand-danger, 42%); color: $brand-danger }
+.audit-log__body { flex: 1 }
+.audit-log__action { font-size: $font-size-sm; margin-bottom: $space-4 }
+.audit-log__meta { display: flex; gap: $space-12; font-size: $font-size-xs; color: $gray-400 }
+.audit-log__detail { font-size: $font-size-xs; background: $gray-50; border-radius: $border-radius-base; padding: $space-6 $space-10; margin-top: $space-6; font-family: $font-family-mono; color: $gray-600 }

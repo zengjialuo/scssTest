@@ -1,0 +1,20 @@
+// ============================================================
+// Loading spinner
+// Legacy technical debt: @import chain, deprecated color functions,
+// vendor-prefix mixins.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+.spinner { display: inline-block; border-radius: 50%; border: 2px solid rgba($brand-primary, .2); border-top-color: $brand-primary; @include animate-infinite(spin, 600ms, linear) }
+.spinner-xs  { width: 12px; height: 12px }
+.spinner-sm  { width: 16px; height: 16px }
+.spinner-md  { width: 24px; height: 24px }
+.spinner-lg  { width: 32px; height: 32px }
+.spinner-xl  { width: 48px; height: 48px }
+.loading-overlay { @include absolute-fill; @include flex-center; background: rgba(white, .8); z-index: $z-raised; border-radius: inherit }
+.loading-fullscreen { @include fixed-fill; @include flex-center; @include flex-column; gap: $space-16; background: rgba(white, .9); z-index: $z-topmost }
+.loading-text { color: $gray-500; font-size: $font-size-sm }

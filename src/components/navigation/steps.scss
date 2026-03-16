@@ -1,0 +1,21 @@
+// ============================================================
+// Steps wizard
+// Legacy technical debt: @import chain, deprecated color functions,
+// vendor-prefix mixins.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+.steps { display: flex; align-items: center }
+.steps__item { display: flex; align-items: center; flex: 1 }
+.steps__item:last-child { flex: 0 }
+.steps__connector { flex: 1; height: 2px; background: $gray-200; @include transition(background $transition-slow) }
+.steps__item.is-done ~ .steps__item .steps__connector { background: $brand-success }
+.steps__node { @include flex-column; align-items: center; gap: $space-8 }
+.steps__circle { width: 36px; height: 36px; border-radius: 50%; @include flex-center; font-size: $font-size-sm; font-weight: $font-weight-bold; border: 2px solid $gray-200; background: white; color: $gray-400; @include transition(all $transition-base) }
+.steps__item.is-active .steps__circle { border-color: $brand-primary; color: $brand-primary }
+.steps__item.is-done   .steps__circle { background: $brand-success; border-color: $brand-success; color: white; -webkit-animation: popIn 300ms ease; animation: popIn 300ms ease }
+.steps__label { font-size: $font-size-xs; color: $gray-500; white-space: nowrap }

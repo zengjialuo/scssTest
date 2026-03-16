@@ -1,0 +1,19 @@
+// ============================================================
+// Pagination
+// Legacy technical debt: @import chain, deprecated color functions,
+// vendor-prefix mixins.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+.pagination { display: flex; align-items: center; gap: $space-4 }
+.pagination__btn { width: 32px; height: 32px; @include flex-center; border: 1px solid $border-color-base; border-radius: $border-radius-base; cursor: pointer; font-size: $font-size-sm; @include transition(all $transition-fast) }
+.pagination__btn:hover:not(.is-active):not(.is-disabled) { border-color: $brand-primary; color: $brand-primary }
+.pagination__btn.is-active { background: $brand-primary; color: white; border-color: $brand-primary }
+.pagination__btn.is-disabled { opacity: .4; cursor: not-allowed }
+.pagination__ellipsis { width: 32px; @include flex-center; color: $gray-400 }
+.pagination-sm .pagination__btn { width: 26px; height: 26px; font-size: $font-size-xs }
+.pagination-lg .pagination__btn { width: 40px; height: 40px }

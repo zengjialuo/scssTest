@@ -1,0 +1,16 @@
+// ============================================================
+// Breadcrumb
+// Legacy technical debt: @import chain, deprecated color functions,
+// vendor-prefix mixins.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+.breadcrumb { display: flex; align-items: center; gap: $space-6; font-size: $font-size-sm; flex-wrap: wrap }
+.breadcrumb__item { color: $gray-500; @include transition(color $transition-fast) }
+.breadcrumb__item.is-current { color: $gray-900; font-weight: $font-weight-medium; cursor: default }
+.breadcrumb__item:not(.is-current) { cursor: pointer; &:hover { color: $brand-primary } }
+.breadcrumb__sep { color: $gray-300; font-size: $font-size-xs }

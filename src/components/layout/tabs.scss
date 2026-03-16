@@ -1,0 +1,19 @@
+// ============================================================
+// Tab bar
+// Legacy technical debt: @import chain, deprecated color functions,
+// vendor-prefix mixins.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+.tabs { border-bottom: 2px solid $border-color-base }
+.tabs__list { display: flex; gap: 0; overflow-x: auto; @include scrollbar-thin }
+.tabs__tab { padding: $space-12 $space-20; cursor: pointer; font-weight: $font-weight-medium; color: $gray-600; white-space: nowrap; border-bottom: 2px solid transparent; margin-bottom: -2px; @include transition(all $transition-fast) }
+.tabs__tab.is-active { color: $brand-primary; border-color: $brand-primary }
+.tabs__tab:hover:not(.is-active) { color: $gray-900 }
+.tabs__tab.is-disabled { opacity: .4; cursor: not-allowed; pointer-events: none }
+.tabs__content { padding: $space-20 0 }
+.tabs__panel { -webkit-animation: fadeIn 200ms ease both; animation: fadeIn 200ms ease both }

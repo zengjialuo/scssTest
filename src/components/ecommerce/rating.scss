@@ -1,0 +1,19 @@
+// ============================================================
+// Star rating
+// Legacy technical debt: @import chain, deprecated color functions,
+// vendor-prefix mixins.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+.rating { display: inline-flex; align-items: center; gap: $space-4 }
+.rating__star { color: $gray-200; @include transition(color $transition-fast) }
+.rating__star.is-filled { color: $brand-warning }
+.rating__star.is-half { position: relative; &::after { content: "★"; position: absolute; left: 0; top: 0; width: 50%; overflow: hidden; color: $brand-primary } }
+.rating--interactive .rating__star { cursor: pointer; &:hover, &.is-hovered { @include transform(scale(1.2)) } }
+.rating__count { font-size: $font-size-sm; color: $gray-400; margin-left: $space-4 }
+.rating-display { display: flex; align-items: center; gap: $space-8 }
+.rating-display__score { font-size: $font-size-3xl; font-weight: $font-weight-black; color: $brand-warning }

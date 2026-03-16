@@ -1,0 +1,20 @@
+// ============================================================
+// Dropdown menu
+// Legacy technical debt: @import chain, deprecated color functions,
+// vendor-prefix mixins.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+.menu { position: relative; display: inline-block }
+.menu__panel { position: absolute; top: calc(100% + $space-4); left: 0; min-width: 180px; background: white; border: 1px solid $border-color-base; border-radius: $border-radius-md; box-shadow: $shadow-lg; z-index: $z-dropdown; overflow: hidden; -webkit-animation: fadeInDown 150ms ease both; animation: fadeInDown 150ms ease both }
+.menu__item { display: flex; align-items: center; gap: $space-10; padding: $space-8 $space-16; cursor: pointer; font-size: $font-size-sm; color: $gray-700; @include transition(background $transition-fast) }
+.menu__item:hover { background: $gray-50 }
+.menu__item.is-active  { color: $brand-primary }
+.menu__item.is-danger  { color: $brand-danger; &:hover { background: lighten($brand-danger, 46%) } }
+.menu__item.is-disabled{ opacity: .4; cursor: not-allowed }
+.menu__divider { border: none; border-top: 1px solid $border-color-base; margin: $space-4 0 }
+.menu__header  { padding: $space-6 $space-16; font-size: $font-size-xs; font-weight: $font-weight-semibold; color: $gray-400; text-transform: uppercase }

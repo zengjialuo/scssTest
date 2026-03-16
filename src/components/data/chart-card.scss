@@ -1,0 +1,21 @@
+// ============================================================
+// Chart card wrapper
+// Legacy technical debt: @import chain, deprecated color functions,
+// vendor-prefix mixins.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+.chart-card { @include card }
+.chart-card__header { @include flex-between; margin-bottom: $space-20 }
+.chart-card__title { @include heading($font-size-lg) }
+.chart-card__actions { display: flex; gap: $space-8 }
+.chart-card__body { position: relative; min-height: 200px; @include flex-center }
+.chart-card__legend { display: flex; flex-wrap: wrap; gap: $space-12; margin-top: $space-16 }
+.chart-card__legend-item { display: flex; align-items: center; gap: $space-6; font-size: $font-size-sm }
+.chart-card__legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0 }
+.chart-card__loading { @include absolute-fill; @include flex-center; background: rgba(white, .8); -webkit-animation: fadeIn 200ms ease; animation: fadeIn 200ms ease }
+.chart-card__empty  { @include flex-column; align-items: center; gap: $space-12; color: $gray-400; font-size: $font-size-sm }

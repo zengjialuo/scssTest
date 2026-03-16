@@ -1,0 +1,14 @@
+// ============================================================
+// Textarea
+// Legacy technical debt: @import chain, deprecated color functions,
+// vendor-prefix mixins.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+.textarea { @include input-base; resize: vertical; min-height: 80px; font-family: $font-family-base }
+.textarea-autosize { overflow: hidden }
+.textarea-count { font-size: $font-size-xs; color: $gray-400; text-align: right; margin-top: $space-4 }

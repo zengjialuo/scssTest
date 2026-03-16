@@ -1,0 +1,15 @@
+// ============================================================
+// Anchor nav
+// Legacy technical debt: @import chain, deprecated color functions,
+// vendor-prefix mixins.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+.anchor { position: sticky; top: $space-24 }
+.anchor__item { display: flex; align-items: center; gap: $space-8; padding: $space-6 $space-10; font-size: $font-size-sm; color: $gray-500; cursor: pointer; border-left: 2px solid transparent; @include transition(all $transition-fast) }
+.anchor__item:hover { color: $gray-900 }
+.anchor__item.is-active { color: $brand-primary; border-color: $brand-primary; background: lighten($brand-primary, 46%) }

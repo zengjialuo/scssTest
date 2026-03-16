@@ -1,0 +1,20 @@
+// ============================================================
+// Skeleton loader
+// Legacy technical debt: @import chain, deprecated color functions,
+// vendor-prefix mixins.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+@mixin skel { background: linear-gradient(90deg, $gray-100 25%, $gray-200 50%, $gray-100 75%); background-size: 200% 100%; border-radius: $border-radius-base; @include animate-infinite(skeletonWave, 1.5s, linear) }
+.skel        { @include skel; height: 16px; width: 100% }
+.skel-text   { @include skel; height: 14px; border-radius: 4px; margin-bottom: $space-6 }
+.skel-title  { @include skel; height: 28px; width: 60% }
+.skel-avatar { @include skel; border-radius: 50%; width: 40px; height: 40px }
+.skel-btn    { @include skel; height: 36px; width: 100px }
+.skel-card   { @include skel; height: 200px; border-radius: $border-radius-md }
+.skel-paragraph { display: flex; flex-direction: column; gap: $space-6 }
+.skel-paragraph .skel-text:last-child { width: 60% }

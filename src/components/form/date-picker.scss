@@ -1,0 +1,16 @@
+// ============================================================
+// Date picker
+// Legacy technical debt: @import chain, deprecated color functions,
+// vendor-prefix mixins.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+.date-picker { position: relative; display: inline-block }
+.date-picker__input { @include input-base; padding-right: $space-32; cursor: pointer; min-width: 200px }
+.date-picker__icon  { position: absolute; right: $space-8; top: 50%; transform: translateY(-50%); color: $gray-400; pointer-events: none }
+.date-picker__panel { position: absolute; top: calc(100% + $space-6); left: 0; z-index: $z-dropdown; background: white; border: 1px solid $border-color-base; border-radius: $border-radius-md; box-shadow: $shadow-lg; padding: $space-16; -webkit-animation: fadeInDown 150ms ease both; animation: fadeInDown 150ms ease both }
+.date-picker__time  { border-top: 1px solid $border-color-base; padding-top: $space-12; margin-top: $space-12; @include flex-between }

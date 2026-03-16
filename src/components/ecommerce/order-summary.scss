@@ -1,0 +1,20 @@
+// ============================================================
+// Order summary
+// Legacy technical debt: @import chain, deprecated color functions,
+// vendor-prefix mixins.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+.order-summary { @include card }
+.order-summary__title { @include heading($font-size-lg); margin-bottom: $space-16 }
+.order-summary__items { margin-bottom: $space-16 }
+.order-summary__item { @include flex-between; padding: $space-8 0; font-size: $font-size-sm }
+.order-summary__item-thumb { width: 40px; height: 40px; border-radius: $border-radius-base; object-fit: cover; flex-shrink: 0 }
+.order-summary__divider { border: none; border-top: 1px solid $border-color-base; margin: $space-12 0 }
+.order-summary__row { @include flex-between; padding: $space-6 0; font-size: $font-size-sm }
+.order-summary__total { @include flex-between; padding-top: $space-12; font-size: $font-size-lg; font-weight: $font-weight-bold }
+.order-summary__promo { display: flex; gap: $space-8; margin: $space-12 0 }

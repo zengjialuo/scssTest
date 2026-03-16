@@ -1,0 +1,17 @@
+// ============================================================
+// Rich text editor
+// Legacy technical debt: @import chain, deprecated color functions,
+// vendor-prefix mixins.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+.rich-text-wrap { border: 1px solid $border-color-base; border-radius: $border-radius-md; overflow: hidden; @include transition(border-color $transition-fast, box-shadow $transition-fast) }
+.rich-text-wrap:focus-within { border-color: $brand-primary; box-shadow: 0 0 0 3px rgba($brand-primary, .2) }
+.rich-text__toolbar { display: flex; flex-wrap: wrap; gap: $space-2; padding: $space-6 $space-10; border-bottom: 1px solid $border-color-base; background: $gray-50 }
+.rich-text__btn { width: 28px; height: 28px; @include flex-center; border: none; background: none; border-radius: $border-radius-base; cursor: pointer; color: $gray-600; @include transition(all $transition-fast); &:hover { background: $gray-200 }; &.is-active { background: $brand-primary; color: white } }
+.rich-text__sep { width: 1px; background: $border-color-base; margin: 0 $space-4 }
+.rich-text__body { padding: $space-12 $space-16; min-height: 120px; outline: none; line-height: $line-height-relaxed }

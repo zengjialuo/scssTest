@@ -1,0 +1,22 @@
+// ============================================================
+// Toast notification
+// Legacy technical debt: @import chain, deprecated color functions,
+// vendor-prefix mixins.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+$toast-gap: $space-8;
+.toast-container { position: fixed; z-index: $z-toast; display: flex; flex-direction: column; gap: $toast-gap }
+.toast-container--tr { top: $space-24; right: $space-24 }
+.toast-container--br { bottom: $space-24; right: $space-24 }
+.toast-container--tc { top: $space-24; left: 50%; transform: translateX(-50%) }
+.toast { display: flex; align-items: flex-start; gap: $space-10; padding: $space-12 $space-16; background: white; border-radius: $border-radius-md; box-shadow: $shadow-lg; min-width: 280px; max-width: 400px; -webkit-animation: slideInRight 300ms ease both; animation: slideInRight 300ms ease both }
+.toast.is-exiting { -webkit-animation: slideOutRight 200ms ease forwards; animation: slideOutRight 200ms ease forwards }
+.toast--success { border-left: 3px solid $brand-success }
+.toast--error   { border-left: 3px solid $brand-danger }
+.toast--warning { border-left: 3px solid $brand-warning }
+.toast--info    { border-left: 3px solid $brand-info }

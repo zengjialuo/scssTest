@@ -1,0 +1,20 @@
+// ============================================================
+// List item
+// Legacy technical debt: @import chain, deprecated color functions,
+// vendor-prefix mixins.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+.list { @include card($space-0); overflow: hidden }
+.list__item { display: flex; align-items: center; gap: $space-12; padding: $space-14 $space-16; border-bottom: 1px solid $border-color-base; @include transition(background $transition-fast); cursor: pointer; -webkit-animation: fadeIn 300ms ease both; animation: fadeIn 300ms ease both }
+.list__item:last-child { border-bottom: none }
+.list__item:hover { background: $gray-50 }
+.list__item.is-active { background: lighten($brand-primary, 46%) }
+.list__item-content { flex: 1; min-width: 0 }
+.list__item-title { font-weight: $font-weight-medium; @include text-truncate }
+.list__item-desc { font-size: $font-size-sm; color: $gray-500; @include text-clamp(2) }
+.list__item-meta { font-size: $font-size-xs; color: $gray-400; margin-top: $space-2 }

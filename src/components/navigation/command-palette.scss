@@ -1,0 +1,20 @@
+// ============================================================
+// Command palette
+// Legacy technical debt: @import chain, deprecated color functions,
+// vendor-prefix mixins.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+.command-palette { @include fixed-fill; @include flex-center; z-index: $z-topmost; background: rgba($gray-900, .6); -webkit-animation: fadeIn 150ms ease both; animation: fadeIn 150ms ease both }
+.command-palette__dialog { width: 540px; max-height: 480px; @include card($space-0, $border-radius-lg); @include flex-column; overflow: hidden; -webkit-animation: fadeInDown 200ms ease both; animation: fadeInDown 200ms ease both }
+.command-palette__input-wrap { display: flex; align-items: center; gap: $space-12; padding: $space-16; border-bottom: 1px solid $border-color-base }
+.command-palette__input { flex: 1; border: none; outline: none; font-size: $font-size-lg; background: transparent }
+.command-palette__list { flex: 1; overflow-y: auto; padding: $space-6; @include scrollbar-thin }
+.command-palette__item { display: flex; align-items: center; gap: $space-12; padding: $space-8 $space-12; border-radius: $border-radius-base; cursor: pointer; @include transition(background $transition-fast) }
+.command-palette__item:hover, .command-palette__item.is-focused { background: $gray-100 }
+.command-palette__label { flex: 1; font-size: $font-size-sm }
+.command-palette__kbd { font-size: $font-size-xs; background: $gray-200; padding: 2px $space-6; border-radius: $border-radius-base }

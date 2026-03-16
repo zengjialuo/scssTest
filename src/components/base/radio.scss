@@ -1,0 +1,15 @@
+// ============================================================
+// Radio button
+// Legacy technical debt: @import chain, deprecated color functions,
+// vendor-prefix mixins.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+.radio-wrap { display: inline-flex; align-items: center; gap: $space-6; cursor: pointer; user-select: none }
+.radio { width: 16px; height: 16px; border: 2px solid $border-color-base; border-radius: 50%; @include flex-center; @include transition(all $transition-fast); flex-shrink: 0 }
+.radio.is-checked { border-color: $brand-primary }
+.radio.is-checked::after { content: ""; width: 8px; height: 8px; border-radius: 50%; background: $brand-primary; -webkit-animation: popIn 200ms ease; animation: popIn 200ms ease }

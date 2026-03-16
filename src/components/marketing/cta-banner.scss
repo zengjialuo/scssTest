@@ -1,0 +1,15 @@
+// ============================================================
+// CTA banner
+// Legacy technical debt: @import chain, deprecated color functions,
+// vendor-prefix mixins.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+.cta-banner { background: linear-gradient(135deg, $brand-primary 0%, $color-analogous-a 100%); background-size: 200% 200%; -webkit-animation: gradientFlow 8s ease infinite; animation: gradientFlow 8s ease infinite; border-radius: $border-radius-xl; padding: $space-48 $space-40; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: $space-32; @include respond-to("md") { grid-template-columns: 1fr; text-align: center } }
+.cta-banner__title { @include heading($font-size-3xl); color: white; margin-bottom: $space-8 }
+.cta-banner__desc { color: rgba(white, .85); font-size: $font-size-lg }
+.cta-banner__actions { display: flex; gap: $space-12; flex-shrink: 0; @include respond-to("md") { justify-content: center } }

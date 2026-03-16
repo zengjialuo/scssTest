@@ -1,0 +1,19 @@
+// ============================================================
+// Search input
+// Legacy technical debt: @import chain, deprecated color functions,
+// vendor-prefix mixins.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+.search { position: relative; display: flex; align-items: center }
+.search__input { @include input-base; padding-left: $space-36; border-radius: 9999px }
+.search__icon  { position: absolute; left: $space-12; color: $gray-400; pointer-events: none; @include transition(color $transition-fast) }
+.search__input:focus ~ .search__icon { color: $brand-primary }
+.search__clear { position: absolute; right: $space-10; background: none; border: none; color: $gray-400; cursor: pointer; display: none; padding: $space-2 }
+.search__input:not(:placeholder-shown) ~ .search__clear { display: block }
+.search__dropdown { position: absolute; top: calc(100% + $space-6); left: 0; right: 0; background: white; border: 1px solid $border-color-base; border-radius: $border-radius-md; box-shadow: $shadow-lg; max-height: 300px; overflow-y: auto; z-index: $z-dropdown; -webkit-animation: fadeInDown 150ms ease both; animation: fadeInDown 150ms ease both }
+.search__result { padding: $space-10 $space-16; cursor: pointer; @include transition(background $transition-fast); font-size: $font-size-sm; &:hover { background: $gray-50 } }

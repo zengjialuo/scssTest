@@ -1,0 +1,17 @@
+// ============================================================
+// Feature card
+// Legacy technical debt: @import chain, deprecated color functions,
+// vendor-prefix mixins.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+.feature-card { @include card; @include transition(transform $transition-slow, box-shadow $transition-slow) }
+.feature-card:hover { @include transform(translateY(-4px)); box-shadow: $shadow-lg }
+.feature-card__icon { width: 56px; height: 56px; border-radius: $border-radius-lg; @include flex-center; margin-bottom: $space-16; font-size: 28px }
+@each $name, $color in (primary: $brand-primary, secondary: $brand-secondary, success: $brand-success, warning: $brand-warning, info: $brand-info) { .feature-card__icon--#{$name} { background: lighten($color, 42%); color: $color } }
+.feature-card__title { @include heading($font-size-xl); margin-bottom: $space-8 }
+.feature-card__desc { color: $gray-600; line-height: $line-height-relaxed }

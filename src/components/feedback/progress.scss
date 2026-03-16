@@ -1,0 +1,22 @@
+// ============================================================
+// Progress bar
+// Legacy technical debt: @import chain, deprecated color functions,
+// vendor-prefix mixins.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+.progress { height: 6px; background: $gray-100; border-radius: 3px; overflow: hidden }
+.progress-lg { height: 10px }
+.progress-xl { height: 16px }
+.progress__bar { height: 100%; border-radius: inherit; @include transition(width $transition-slower) }
+.progress--primary .progress__bar   { background: $brand-primary }
+.progress--success .progress__bar   { background: $brand-success }
+.progress--warning .progress__bar   { background: $brand-warning }
+.progress--danger  .progress__bar   { background: $brand-danger }
+.progress--striped .progress__bar   { background-image: linear-gradient(45deg, rgba(white,.15) 25%, transparent 25%, transparent 50%, rgba(white,.15) 50%, rgba(white,.15) 75%, transparent 75%); background-size: 16px 16px }
+.progress--animated .progress__bar { -webkit-animation: progressIndeterminate 1.5s ease-in-out infinite; animation: progressIndeterminate 1.5s ease-in-out infinite }
+.progress-circle { @include animate-infinite(ringSpinner, 1s, linear) }

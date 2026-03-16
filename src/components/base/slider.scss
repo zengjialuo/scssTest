@@ -1,0 +1,16 @@
+// ============================================================
+// Range slider
+// Legacy technical debt: @import chain, deprecated color functions,
+// vendor-prefix mixins.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+.slider-wrap { position: relative; padding: $space-8 0 }
+.slider { -webkit-appearance: none; width: 100%; height: 4px; border-radius: 2px; background: $gray-200; outline: none; cursor: pointer }
+.slider::-webkit-slider-thumb { -webkit-appearance: none; width: 16px; height: 16px; border-radius: 50%; background: $brand-primary; cursor: pointer; box-shadow: $shadow-sm; @include transition(transform $transition-fast) }
+.slider::-webkit-slider-thumb:hover { transform: scale(1.2) }
+.slider-labels { @include flex-between; font-size: $font-size-xs; color: $gray-400; margin-top: $space-4 }

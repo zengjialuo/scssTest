@@ -1,0 +1,16 @@
+// ============================================================
+// Toggle switch
+// Legacy technical debt: @import chain, deprecated color functions,
+// vendor-prefix mixins.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+.toggle { display: inline-flex; align-items: center; gap: $space-8; cursor: pointer; user-select: none }
+.toggle-track { width: 44px; height: 24px; border-radius: 12px; background: $gray-300; position: relative; @include transition(background $transition-base) }
+.toggle-thumb { position: absolute; top: 2px; left: 2px; width: 20px; height: 20px; border-radius: 50%; background: white; box-shadow: $shadow-sm; @include transition(transform $transition-base) }
+.toggle.is-on .toggle-track { background: $brand-primary }
+.toggle.is-on .toggle-thumb { transform: translateX(20px) }

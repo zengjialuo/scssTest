@@ -1,0 +1,18 @@
+// ============================================================
+// KPI stat card
+// Legacy technical debt: @import chain, deprecated color functions,
+// vendor-prefix mixins.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+.stat-card { @include card; -webkit-animation: fadeInUp 400ms ease both; animation: fadeInUp 400ms ease both }
+.stat-card__label { font-size: $font-size-sm; color: $gray-500; text-transform: uppercase; letter-spacing: .06em; margin-bottom: $space-6 }
+.stat-card__value { font-size: $font-size-3xl; font-weight: $font-weight-black; color: $gray-900; margin-bottom: $space-8; -webkit-animation: countUp 600ms ease both; animation: countUp 600ms ease both }
+.stat-card__trend { display: inline-flex; align-items: center; gap: $space-4; font-size: $font-size-sm; font-weight: $font-weight-medium; padding: 2px $space-8; border-radius: 9999px }
+.stat-card__trend--up   { background: lighten($brand-success, 42%); color: darken($brand-success, 15%) }
+.stat-card__trend--down { background: lighten($brand-danger, 42%);  color: darken($brand-danger, 15%)  }
+.stat-card__sparkline { margin-top: $space-16; height: 40px }

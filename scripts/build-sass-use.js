@@ -127,26 +127,29 @@ const convertingImporter = {
 };
 
 // ---------------------------------------------------------------------------
-// Recursively scan src/pages/
+// Recursively scan src/ subdirectory
 // ---------------------------------------------------------------------------
-function scanScssFiles(dir, base) {
+function scanScssFiles(dir, srcRel, base) {
   const results = [];
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
     const rel = path.join(base, entry.name);
     if (entry.isDirectory()) {
-      results.push(...scanScssFiles(path.join(dir, entry.name), rel));
+      results.push(...scanScssFiles(path.join(dir, entry.name), srcRel, rel));
     } else if (entry.name.endsWith('.scss')) {
       results.push({
-        input:  path.join('src/pages', rel),
-        output: path.join('dist/pages-use', rel.replace(/\.scss$/, '.use.css')),
-        label:  rel.replace(/\.scss$/, ''),
+        input:  path.join('src', srcRel, rel),
+        output: path.join('dist', srcRel + '-use', rel.replace(/\.scss$/, '.use.css')),
+        label:  path.join(srcRel, rel).replace(/\.scss$/, ''),
       });
     }
   }
   return results;
 }
 
-const entries = scanScssFiles(path.join(SRC, 'pages'), '');
+const entries = [
+  ...scanScssFiles(path.join(SRC, 'pages'), 'pages', ''),
+  ...scanScssFiles(path.join(SRC, 'components'), 'components', ''),
+];
 
 console.log('\n📊 SCSS Compilation (@use — in-memory conversion)\n');
 console.log('='.repeat(60));

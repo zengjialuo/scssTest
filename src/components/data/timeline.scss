@@ -1,0 +1,20 @@
+// ============================================================
+// Timeline
+// Legacy technical debt: @import chain, deprecated color functions,
+// vendor-prefix mixins.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+.timeline { position: relative; padding-left: $space-32 }
+.timeline::before { content: ""; position: absolute; left: 14px; top: 0; bottom: 0; width: 2px; background: $gray-200 }
+.timeline__item { position: relative; margin-bottom: $space-24; -webkit-animation: fadeInLeft 400ms ease both; animation: fadeInLeft 400ms ease both }
+@for $i from 1 through 10 { .timeline__item:nth-child(#{$i}) { animation-delay: #{$i * 60}ms } }
+.timeline__dot { position: absolute; left: -($space-32 - 6px); top: $space-4; width: 12px; height: 12px; border-radius: 50%; background: white; border: 2px solid $gray-300; z-index: 1 }
+.timeline__item.is-done  .timeline__dot { background: $brand-success; border-color: $brand-success }
+.timeline__item.is-active .timeline__dot { background: $brand-primary; border-color: $brand-primary; -webkit-animation: glowPulse 1.5s ease-in-out infinite; animation: glowPulse 1.5s ease-in-out infinite }
+.timeline__time { font-size: $font-size-xs; color: $gray-400; margin-bottom: $space-4 }
+.timeline__card { @include card($space-14) }

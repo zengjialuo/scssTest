@@ -1,0 +1,22 @@
+// ============================================================
+// Cart line item
+// Legacy technical debt: @import chain, deprecated color functions,
+// vendor-prefix mixins.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+.cart-item { display: flex; gap: $space-14; padding: $space-16; border-bottom: 1px solid $border-color-base; @include transition(background $transition-fast) }
+.cart-item:hover { background: $gray-50 }
+.cart-item__img { width: 72px; height: 72px; border-radius: $border-radius-base; object-fit: cover; flex-shrink: 0; background: $gray-100 }
+.cart-item__info { flex: 1; min-width: 0 }
+.cart-item__name { font-weight: $font-weight-medium; margin-bottom: $space-4; @include text-truncate }
+.cart-item__variant { font-size: $font-size-sm; color: $gray-500; margin-bottom: $space-8 }
+.cart-item__footer { @include flex-between }
+.cart-item__qty { display: flex; align-items: center; gap: $space-8 }
+.cart-item__qty-btn { width: 26px; height: 26px; @include flex-center; border: 1px solid $border-color-base; border-radius: $border-radius-base; cursor: pointer; @include transition(all $transition-fast); &:hover { background: $gray-100 } }
+.cart-item__price { font-weight: $font-weight-bold; color: $brand-primary }
+.cart-item__remove { color: $gray-400; background: none; border: none; cursor: pointer; @include transition(color $transition-fast); &:hover { color: $brand-danger } }

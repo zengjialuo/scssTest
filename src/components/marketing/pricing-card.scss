@@ -1,0 +1,20 @@
+// ============================================================
+// Pricing card
+// Legacy technical debt: @import chain, deprecated color functions,
+// vendor-prefix mixins.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+.pricing-card { @include card; text-align: center; position: relative; @include transition(transform $transition-slow, box-shadow $transition-slow) }
+.pricing-card:hover { @include transform(translateY(-6px)); box-shadow: $shadow-2xl }
+.pricing-card.is-featured { border-color: $brand-primary; border-width: 2px; @include animate-infinite(borderGlow, 3s) }
+.pricing-card__badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: $brand-primary; color: white; padding: 4px $space-16; border-radius: 9999px; font-size: $font-size-xs; font-weight: $font-weight-bold; white-space: nowrap }
+.pricing-card__plan { font-size: $font-size-sm; font-weight: $font-weight-semibold; text-transform: uppercase; letter-spacing: .1em; color: $brand-primary; margin-bottom: $space-8 }
+.pricing-card__price { font-size: $font-size-6xl; font-weight: $font-weight-black; line-height: 1; margin: $space-12 0 }
+.pricing-card__period { font-size: $font-size-sm; color: $gray-400 }
+.pricing-card__features { text-align: left; margin: $space-24 0; display: flex; flex-direction: column; gap: $space-10 }
+.pricing-card__feature { display: flex; align-items: center; gap: $space-8; font-size: $font-size-sm }

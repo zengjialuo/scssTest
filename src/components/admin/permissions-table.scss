@@ -1,0 +1,18 @@
+// ============================================================
+// Permissions grid
+// Legacy technical debt: @import chain, deprecated color functions,
+// vendor-prefix mixins.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+.permissions-table { @include card($space-0); overflow: auto; @include scrollbar-thin }
+.permissions-table table { border-collapse: collapse; min-width: 600px }
+.permissions-table th, .permissions-table td { padding: $space-10 $space-14; border-bottom: 1px solid $border-color-base; text-align: left; white-space: nowrap }
+.permissions-table th { background: $gray-50; font-size: $font-size-sm; font-weight: $font-weight-semibold; color: $gray-600; position: sticky; top: 0 }
+.permissions-table td:first-child { font-weight: $font-weight-medium; background: white; position: sticky; left: 0; border-right: 1px solid $border-color-base }
+.permissions-table__checkbox { width: 20px; height: 20px; accent-color: $brand-primary; cursor: pointer }
+.permissions-table__role-header { text-align: center; font-size: $font-size-xs; text-transform: uppercase; letter-spacing: .06em; color: $gray-500 }

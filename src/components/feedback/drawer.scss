@@ -1,0 +1,18 @@
+// ============================================================
+// Side drawer
+// Legacy technical debt: @import chain, deprecated color functions,
+// vendor-prefix mixins.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+.drawer-overlay { @include fixed-fill; background: rgba($gray-900, .5); z-index: $z-modal; -webkit-animation: fadeIn 200ms ease both; animation: fadeIn 200ms ease both }
+.drawer { position: fixed; top: 0; bottom: 0; background: white; z-index: $z-modal + 1; overflow-y: auto; box-shadow: $shadow-2xl; @include transition(transform $transition-slow) }
+.drawer--right { right: 0; width: 400px; transform: translateX(0); &.is-closed { transform: translateX(100%) } }
+.drawer--left  { left: 0; width: 400px; transform: translateX(0); &.is-closed { transform: translateX(-100%) } }
+.drawer__header { @include flex-between; padding: $space-20 $space-24; border-bottom: 1px solid $border-color-base; position: sticky; top: 0; background: white; z-index: 1 }
+.drawer__body   { padding: $space-24 }
+.drawer__footer { padding: $space-16 $space-24; border-top: 1px solid $border-color-base; @include flex-between; position: sticky; bottom: 0; background: white }

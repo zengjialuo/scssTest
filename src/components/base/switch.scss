@@ -1,0 +1,15 @@
+// ============================================================
+// Switch group
+// Legacy technical debt: @import chain, deprecated color functions,
+// vendor-prefix mixins.
+// ============================================================
+@import 'scss/legacy/vars';
+@import 'scss/legacy/animations';
+@import 'scss/legacy/mixins';
+@import 'scss/legacy/utilities';
+@import 'scss/legacy/components';
+
+.switch-group { display: flex; flex-wrap: wrap; gap: $space-6 }
+.switch-option { padding: $space-6 $space-14; border: 1px solid $border-color-base; border-radius: $border-radius-base; cursor: pointer; font-size: $font-size-sm; @include transition(all $transition-fast) }
+.switch-option.is-active { background: $brand-primary; color: white; border-color: $brand-primary }
+.switch-option:hover:not(.is-active) { border-color: $brand-primary; color: $brand-primary }
